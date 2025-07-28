@@ -54,12 +54,22 @@ const StrategicSessionForm = ({
 
   const onSubmit = async (data: FormData) => {
     try {
-      // Aqui você pode integrar com sua API
-      console.log("Form data:", data);
+      const response = await fetch('/api/send-strategic-session-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send email');
+      }
       
       toast.success("Formulário enviado com sucesso! Entraremos em contato em breve.");
       form.reset();
     } catch (error) {
+      console.error('Error sending form:', error);
       toast.error("Erro ao enviar formulário. Tente novamente.");
     }
   };
