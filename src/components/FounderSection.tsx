@@ -38,7 +38,7 @@ const FounderSection = () => {
                 <div className="absolute -bottom-6 -right-6 bg-white rounded-lg p-4 shadow-lg max-w-xs hidden sm:block">
                   <Quote className="w-6 h-6 text-primary mb-2" />
                   <p className="text-sm font-medium text-gray-900">
-                    "Minha missão é impactar empresas, pessoas e economia de forma exponencial."
+                    "Minha missão é impactar pessoas e empresas a prosperarem de forma exponencial."
                   </p>
                 </div>
               </div>
@@ -81,8 +81,8 @@ const FounderSection = () => {
                     <div className="text-sm text-muted-foreground">Projetos Executados</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-primary">4</div>
-                    <div className="text-sm text-muted-foreground">Filhos</div>
+                    <div className="text-2xl font-bold text-primary">700%</div>
+                    <div className="text-sm text-muted-foreground">Crescimento entregue</div>
                   </div>
                 </div>
 
