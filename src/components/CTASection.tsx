@@ -98,28 +98,7 @@ const CTASection = () => {
             </div>
           </div>
 
-          {/* Alternative Contact */}
-          <div className="text-center mt-12 animate-on-scroll">
-            <p className="text-muted-foreground mb-4">
-              Prefere entrar em contato diretamente?
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a 
-                href="mailto:contato@mxmo.com.br" 
-                className="button-secondary"
-              >
-                contato@mxmo.com.br
-              </a>
-              <a 
-                href="https://wa.me/5511999999999" 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="button-secondary"
-              >
-                WhatsApp
-              </a>
-            </div>
-          </div>
+          {/* Alternative Contact - REMOVED */}
         </div>
       </div>
     </section>
