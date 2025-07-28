@@ -100,12 +100,12 @@ const Hero = () => {
               </div>
               <div className="w-px h-12 bg-white/20"></div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-accent mb-1">700%</div>
+                <div className="text-3xl font-bold text-accent mb-1">200%</div>
                 <div className="text-sm text-gray-400">Crescimento Médio</div>
               </div>
               <div className="w-px h-12 bg-white/20"></div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-secondary mb-1">100+</div>
+                <div className="text-3xl font-bold text-secondary mb-1">50+</div>
                 <div className="text-sm text-gray-400">Projetos Executados</div>
               </div>
             </div>
