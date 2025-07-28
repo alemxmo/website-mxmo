@@ -59,8 +59,8 @@ const FounderSection = () => {
                 <div className="prose prose-lg text-muted-foreground">
                   <p>
                     Há mais de <strong>20 anos transformando negócios</strong> através da tecnologia, 
-                    vendas e estruturação estratégica. Alexandre decidiu deixar sua posição de CEO 
-                    para multiplicar seu impacto, ajudando empresas a alcançarem seu potencial máximo.
+                    vendas e estruturação estratégica. Alexandre decidiu multiplicar seu impacto, 
+                    ajudando empresas a alcançarem seu potencial máximo.
                   </p>
                   
                   <p>
