@@ -102,7 +102,7 @@ Enviado em: ${new Date().toLocaleString('pt-BR')}
         'template_0osw7ti',
         {
           to_name: 'Alexandre',
-          to_email: 'alexandre@mxmo.com.br',
+          to_email: 'alexandre.maximo1701@gmail.com',
           from_name: data.name,
           reply_to: data.email,
           message: message,

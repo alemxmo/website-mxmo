@@ -1,3 +1,4 @@
+
 import React from "react";
 import emailjs from '@emailjs/browser';
 import { Button } from "@/components/ui/button";
@@ -11,7 +12,7 @@ const EmailTest = () => {
         'template_0osw7ti',
         {
           to_name: 'Alexandre',
-          to_email: 'alexandre@mxmo.com.br',
+          to_email: 'alexandre.maximo1701@gmail.com',
           from_name: 'Teste Sistema',
           reply_to: 'teste@mxmo.com.br',
           message: 'Este é um email de teste para verificar se o sistema está funcionando.',
