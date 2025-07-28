@@ -5,6 +5,11 @@ import StrategicSessionForm from "./StrategicSessionForm";
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-muted/20 overflow-hidden">
+      {/* Background Image with Ultra-Subtle Overlay */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-5"
+        style={{ backgroundImage: "url('/lovable-uploads/de012004-6c31-4ccf-8552-bd2bc6eeaff4.png')" }}
+      />
       <div className="absolute inset-0">
         <div className="absolute top-20 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent/5 rounded-full blur-3xl"></div>

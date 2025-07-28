@@ -4,8 +4,14 @@ import StrategicSessionForm from "./StrategicSessionForm";
 
 const CTASection = () => {
   return (
-    <section className="py-16 sm:py-20 bg-gradient-to-br from-primary/5 to-accent/5" id="contato">
-      <div className="section-container">
+    <section className="relative py-16 sm:py-20 bg-gradient-to-br from-primary/5 to-accent/5 overflow-hidden" id="contato">
+      {/* Background Image with Elegant Overlay */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-8"
+        style={{ backgroundImage: "url('/lovable-uploads/a141d374-d296-487d-8c8f-8eccedde652c.png')" }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-br from-background/80 to-background/60" />
+      <div className="section-container relative z-10">
         <div className="max-w-5xl mx-auto">
           {/* Main CTA */}
           <div className="text-center mb-16 animate-on-scroll">

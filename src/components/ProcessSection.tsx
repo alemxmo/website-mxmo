@@ -3,8 +3,13 @@ import { Clock, Building2, Rocket } from "lucide-react";
 
 const ProcessSection = () => {
   return (
-    <section className="py-16 sm:py-20" id="processo">
-      <div className="section-container">
+    <section className="relative py-16 sm:py-20 overflow-hidden" id="processo">
+      {/* Subtle Background Pattern */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-3"
+        style={{ backgroundImage: "url('/lovable-uploads/daccbff7-9434-4629-96e6-6f2b3de88aa2.png')" }}
+      />
+      <div className="section-container relative z-10">
         <div className="text-center mb-16 animate-on-scroll">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6">
             A Jornada de <span className="gradient-text">Aceleração</span>
