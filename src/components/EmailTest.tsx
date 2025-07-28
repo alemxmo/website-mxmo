@@ -11,10 +11,9 @@ const EmailTest = () => {
         'service_soq4zxl',
         'template_0osw7ti',
         {
-          to_name: 'Alexandre',
-          to_email: 'alexandre.maximo1701@gmail.com',
+          user_name: 'Alexandre',
+          user_email: 'alexandre.maximo1701@gmail.com',
           from_name: 'Teste Sistema',
-          reply_to: 'teste@mxmo.com.br',
           message: 'Este é um email de teste para verificar se o sistema está funcionando.',
           subject: 'Teste de Email - Sistema MXMO'
         },

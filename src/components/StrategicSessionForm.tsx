@@ -101,8 +101,8 @@ Enviado em: ${new Date().toLocaleString('pt-BR')}
         'service_soq4zxl',
         'template_0osw7ti',
         {
-          to_name: 'Alexandre',
-          to_email: 'alexandre.maximo1701@gmail.com',
+          user_name: 'Alexandre',
+          user_email: 'alexandre.maximo1701@gmail.com',
           from_name: data.name,
           reply_to: data.email,
           message: message,
