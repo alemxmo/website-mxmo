@@ -12,7 +12,7 @@ const ProcessSection = () => {
       <div className="section-container relative z-10">
         <div className="text-center mb-16 animate-on-scroll">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            A Jornada de <span className="gradient-text">Aceleração</span>
+            <span className="gradient-text">A Jornada de Aceleração</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             Nosso processo é desenhado para gerar tração desde o primeiro dia.
