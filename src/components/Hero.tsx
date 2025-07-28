@@ -48,7 +48,7 @@ const Hero = () => {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in">
             <a 
-              href="#contato" 
+              href="#formulario" 
               className="button-primary group flex items-center justify-center min-w-[200px]"
             >
               Agendar Sessão Estratégica

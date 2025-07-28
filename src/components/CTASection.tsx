@@ -69,9 +69,7 @@ const CTASection = () => {
               
               <div className="space-y-4 mb-8">
                 <a 
-                  href="https://calendly.com/mxmo-consultoria" 
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="#formulario"
                   className="button-primary group flex items-center justify-center text-lg px-8 py-4 w-full"
                 >
                   Agendar Sessão Estratégica

@@ -95,7 +95,7 @@ const ProblemsSection = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
-              <a href="#contato" className="button-primary text-lg px-8 py-4">
+              <a href="#formulario" className="button-primary text-lg px-8 py-4">
                 QUERO UMA SESSÃO GRATUITA
               </a>
             </div>

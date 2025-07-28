@@ -35,7 +35,7 @@ const Navbar = () => {
           </div>
 
           <div className="hidden md:block">
-            <a href="#contato" className="button-primary">
+            <a href="#formulario" className="button-primary">
               Sessão Estratégica
             </a>
           </div>
@@ -56,9 +56,9 @@ const Navbar = () => {
               <a href="#processo" className="mobile-nav-link" onClick={toggleMenu}>Processo</a>
               <a href="#plataforma" className="mobile-nav-link" onClick={toggleMenu}>Plataforma</a>
               <a href="#problemas" className="mobile-nav-link" onClick={toggleMenu}>Problemas</a>
-              <a href="#contato" className="mobile-nav-link" onClick={toggleMenu}>Contato</a>
+              <a href="#formulario" className="mobile-nav-link" onClick={toggleMenu}>Formulário</a>
               <div className="pt-4">
-                <a href="#contato" className="button-primary w-full text-center" onClick={toggleMenu}>
+                <a href="#formulario" className="button-primary w-full text-center" onClick={toggleMenu}>
                   Sessão Estratégica
                 </a>
               </div>
