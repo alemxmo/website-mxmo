@@ -61,7 +61,6 @@ const Index = () => {
         <ProcessSection />
         <PlatformSection />
         <ProblemsSection />
-        <StrategicSessionForm />
         <CTASection />
       </main>
       <Footer />

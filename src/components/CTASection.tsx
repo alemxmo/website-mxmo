@@ -1,5 +1,6 @@
 import React from "react";
 import { ArrowRight, Clock, CheckCircle, Calendar } from "lucide-react";
+import StrategicSessionForm from "./StrategicSessionForm";
 
 const CTASection = () => {
   return (
@@ -68,13 +69,14 @@ const CTASection = () => {
               </h3>
               
               <div className="space-y-4 mb-8">
-                <a 
-                  href="#formulario"
-                  className="button-primary group flex items-center justify-center text-lg px-8 py-4 w-full"
-                >
-                  Agendar Sessão Estratégica
-                  <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
-                </a>
+                <StrategicSessionForm 
+                  trigger={
+                    <button className="button-primary group flex items-center justify-center text-lg px-8 py-4 w-full">
+                      Agendar Sessão Estratégica
+                      <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
+                    </button>
+                  }
+                />
                 
                 <p className="text-sm text-muted-foreground">
                   ✅ 100% Gratuito • ✅ 1 hora de duração • ✅ Online

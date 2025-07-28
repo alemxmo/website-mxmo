@@ -1,5 +1,6 @@
 import React from "react";
 import { ArrowRight, Zap, Target, TrendingUp } from "lucide-react";
+import StrategicSessionForm from "./StrategicSessionForm";
 
 const Hero = () => {
   return (
@@ -47,13 +48,14 @@ const Hero = () => {
           </div>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in">
-            <a 
-              href="#formulario" 
-              className="button-primary group flex items-center justify-center min-w-[200px]"
-            >
-              Agendar Sessão Estratégica
-              <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </a>
+            <StrategicSessionForm 
+              trigger={
+                <button className="button-primary group flex items-center justify-center min-w-[200px]">
+                  Agendar Sessão Estratégica
+                  <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </button>
+              }
+            />
             <a 
               href="#processo" 
               className="button-secondary min-w-[200px] text-center"

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import StrategicSessionForm from "./StrategicSessionForm";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -35,9 +36,10 @@ const Navbar = () => {
           </div>
 
           <div className="hidden md:block">
-            <a href="#formulario" className="button-primary">
-              Sessão Estratégica
-            </a>
+            <StrategicSessionForm 
+              triggerClassName="button-primary"
+              triggerText="Sessão Estratégica"
+            />
           </div>
 
           <div className="md:hidden">
@@ -56,11 +58,15 @@ const Navbar = () => {
               <a href="#processo" className="mobile-nav-link" onClick={toggleMenu}>Processo</a>
               <a href="#plataforma" className="mobile-nav-link" onClick={toggleMenu}>Plataforma</a>
               <a href="#problemas" className="mobile-nav-link" onClick={toggleMenu}>Problemas</a>
-              <a href="#formulario" className="mobile-nav-link" onClick={toggleMenu}>Formulário</a>
+              <a href="#contato" className="mobile-nav-link" onClick={toggleMenu}>Contato</a>
               <div className="pt-4">
-                <a href="#formulario" className="button-primary w-full text-center" onClick={toggleMenu}>
-                  Sessão Estratégica
-                </a>
+                <StrategicSessionForm 
+                  trigger={
+                    <button className="button-primary w-full text-center" onClick={toggleMenu}>
+                      Sessão Estratégica
+                    </button>
+                  }
+                />
               </div>
             </div>
           </div>

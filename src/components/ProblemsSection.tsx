@@ -1,5 +1,6 @@
 import React from "react";
 import { AlertTriangle, TrendingDown, Target, Users, DollarSign, Eye, Zap } from "lucide-react";
+import StrategicSessionForm from "./StrategicSessionForm";
 
 const ProblemsSection = () => {
   const problems = [
@@ -95,9 +96,10 @@ const ProblemsSection = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
-              <a href="#formulario" className="button-primary text-lg px-8 py-4">
-                QUERO UMA SESSÃO GRATUITA
-              </a>
+              <StrategicSessionForm 
+                triggerClassName="button-primary text-lg px-8 py-4"
+                triggerText="QUERO UMA SESSÃO GRATUITA"
+              />
             </div>
             
             <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium">
