@@ -2,6 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
+import emailjs from '@emailjs/browser';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -9,7 +10,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { toast } from "sonner";
+import { toast } from "@/hooks/use-toast";
 import { Calendar, Clock, Building, Users, Target, TrendingUp } from "lucide-react";
 
 const formSchema = z.object({
@@ -54,23 +55,73 @@ const StrategicSessionForm = ({
 
   const onSubmit = async (data: FormData) => {
     try {
-      const response = await fetch('/api/send-strategic-session-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
+      const revenueLabels: { [key: string]: string } = {
+        "up-to-100k": "Até R$ 100 mil",
+        "100k-500k": "R$ 100 mil - R$ 500 mil",
+        "500k-1m": "R$ 500 mil - R$ 1 milhão",
+        "1m-5m": "R$ 1 milhão - R$ 5 milhões",
+        "5m-10m": "R$ 5 milhões - R$ 10 milhões",
+        "10m-plus": "Mais de R$ 10 milhões",
+      };
 
-      if (!response.ok) {
-        throw new Error('Failed to send email');
-      }
+      const employeeLabels: { [key: string]: string } = {
+        "1-5": "1-5 colaboradores",
+        "6-10": "6-10 colaboradores",
+        "11-25": "11-25 colaboradores",
+        "26-50": "26-50 colaboradores",
+        "51-100": "51-100 colaboradores",
+        "100-plus": "Mais de 100 colaboradores",
+      };
+
+      const timeLabels: { [key: string]: string } = {
+        "morning": "Manhã (9h às 12h)",
+        "afternoon": "Tarde (13h às 17h)",
+        "evening": "Fim de tarde (17h às 19h)",
+      };
+
+      // Formatando a mensagem
+      const message = `
+Nova Solicitação de Sessão Estratégica
+
+Nome: ${data.name}
+E-mail: ${data.email}
+WhatsApp: ${data.whatsapp}
+Empresa: ${data.company}
+Cargo: ${data.position}
+Faturamento Anual: ${revenueLabels[data.revenue]}
+Colaboradores: ${employeeLabels[data.employees]}
+Meta de Crescimento: ${data.growthGoal}
+Horário Preferido: ${timeLabels[data.preferredTime]}
+
+Enviado em: ${new Date().toLocaleString('pt-BR')}
+      `;
+
+      // Configurar EmailJS com suas credenciais
+      await emailjs.send(
+        'YOUR_SERVICE_ID', // Substitua pelo seu Service ID do EmailJS
+        'YOUR_TEMPLATE_ID', // Substitua pelo seu Template ID do EmailJS
+        {
+          to_email: 'alexandre@mxmo.com.br',
+          from_name: data.name,
+          from_email: data.email,
+          message: message,
+          subject: `Nova Sessão Estratégica - ${data.name} (${data.company})`
+        },
+        'YOUR_PUBLIC_KEY' // Substitua pela sua Public Key do EmailJS
+      );
       
-      toast.success("Formulário enviado com sucesso! Entraremos em contato em breve.");
+      toast({
+        title: "Sucesso!",
+        description: "Formulário enviado com sucesso! Entraremos em contato em breve.",
+      });
       form.reset();
     } catch (error) {
       console.error('Error sending form:', error);
-      toast.error("Erro ao enviar formulário. Tente novamente.");
+      toast({
+        title: "Erro",
+        description: "Erro ao enviar formulário. Tente novamente.",
+        variant: "destructive",
+      });
     }
   };
 
