@@ -29,7 +29,6 @@ const ProcessSection = () => {
                     </div>
                     <div>
                       <h3 className="text-xl font-bold text-foreground">Fase 1</h3>
-                      <p className="text-primary font-semibold">2 semanas</p>
                     </div>
                   </div>
                   <h4 className="text-2xl font-bold text-foreground mb-4">
@@ -56,7 +55,6 @@ const ProcessSection = () => {
                     </div>
                     <div>
                       <h3 className="text-xl font-bold text-foreground">Fase 2</h3>
-                      <p className="text-primary font-semibold">2 semanas</p>
                     </div>
                   </div>
                   <h4 className="text-2xl font-bold text-foreground mb-4">
@@ -83,7 +81,6 @@ const ProcessSection = () => {
                     </div>
                     <div>
                       <h3 className="text-xl font-bold text-foreground">Fase 3</h3>
-                      <p className="text-primary font-semibold">10 meses</p>
                     </div>
                   </div>
                   <h4 className="text-2xl font-bold text-foreground mb-4">
