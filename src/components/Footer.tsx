@@ -114,7 +114,7 @@ const Footer = () => {
               <span className="text-white/80">Siga-nos:</span>
               <div className="flex gap-3">
                 <a 
-                  href="https://linkedin.com/company/mxmo" 
+                  href="https://www.linkedin.com/in/alexandremaximo/" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center text-white hover:bg-primary hover:text-white transition-all duration-300"
@@ -122,7 +122,7 @@ const Footer = () => {
                   <Linkedin className="w-5 h-5" />
                 </a>
                 <a 
-                  href="https://instagram.com/mxmo" 
+                  href="https://instagram.com/alemaximo" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center text-white hover:bg-primary hover:text-white transition-all duration-300"
