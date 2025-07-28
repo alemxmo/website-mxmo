@@ -8,7 +8,7 @@ const Hero = () => {
       {/* Background Image with Ultra-Subtle Overlay */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-5"
-        style={{ backgroundImage: "url('/lovable-uploads/de012004-6c31-4ccf-8552-bd2bc6eeaff4.png')" }}
+        style={{ backgroundImage: "url('/lovable-uploads/382fcdfc-3b56-4da6-b07c-693e4425487d.png')" }}
       />
       <div className="absolute inset-0">
         <div className="absolute top-20 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl"></div>
