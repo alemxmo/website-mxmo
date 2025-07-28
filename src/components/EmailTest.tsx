@@ -10,9 +10,10 @@ const EmailTest = () => {
         'service_soq4zxl',
         'template_0osw7ti',
         {
+          to_name: 'Alexandre',
           to_email: 'alexandre@mxmo.com.br',
           from_name: 'Teste Sistema',
-          from_email: 'teste@mxmo.com.br',
+          reply_to: 'teste@mxmo.com.br',
           message: 'Este é um email de teste para verificar se o sistema está funcionando.',
           subject: 'Teste de Email - Sistema MXMO'
         },
