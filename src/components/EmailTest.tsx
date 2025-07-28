@@ -7,8 +7,8 @@ const EmailTest = () => {
   const testEmail = async () => {
     try {
       await emailjs.send(
-        'YOUR_SERVICE_ID', // Substitua pelo seu Service ID do EmailJS
-        'YOUR_TEMPLATE_ID', // Substitua pelo seu Template ID do EmailJS
+        'service_soq4zxl',
+        'template_0osw7ti',
         {
           to_email: 'alexandre@mxmo.com.br',
           from_name: 'Teste Sistema',
@@ -16,7 +16,7 @@ const EmailTest = () => {
           message: 'Este é um email de teste para verificar se o sistema está funcionando.',
           subject: 'Teste de Email - Sistema MXMO'
         },
-        'YOUR_PUBLIC_KEY' // Substitua pela sua Public Key do EmailJS
+        'bDrIc2tRtXZjSbaMi'
       );
       
       toast({
