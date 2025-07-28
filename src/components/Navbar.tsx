@@ -23,7 +23,11 @@ const Navbar = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           <div className="flex-shrink-0">
-            <span className="text-2xl font-bold text-primary">MXMO</span>
+            <img 
+              src="/lovable-uploads/f2840262-7b96-455c-a24c-48be5c0e2ee5.png" 
+              alt="MXMO Logo"
+              className="h-8 w-auto"
+            />
           </div>
 
           <div className="hidden md:block">

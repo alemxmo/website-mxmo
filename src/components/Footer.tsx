@@ -16,7 +16,11 @@ const Footer = () => {
           {/* Company Info */}
           <div className="lg:col-span-2">
             <div className="mb-6">
-              <h3 className="text-2xl font-bold mb-4">MXMO</h3>
+              <img 
+                src="/lovable-uploads/e0d7654f-584f-4726-95e1-e2f81e68a227.png" 
+                alt="MXMO Logo"
+                className="h-10 w-auto mb-4"
+              />
               <p className="text-white/80 leading-relaxed max-w-md">
                 <strong>DNA MXMO:</strong> Inteligência Estratégica, Execução Implacável.
               </p>
