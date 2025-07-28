@@ -1,6 +1,7 @@
 
 import React from "react";
 import { Mail, MessageCircle, MapPin, Linkedin, Instagram, ArrowUp } from "lucide-react";
+import PrivacyPolicyDialog from "./PrivacyPolicyDialog";
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -98,9 +99,11 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="/politica-privacidade" className="text-white/80 hover:text-white transition-colors">
-                  Política de Privacidade
-                </a>
+                <PrivacyPolicyDialog>
+                  <button className="text-white/80 hover:text-white transition-colors text-left">
+                    Política de Privacidade
+                  </button>
+                </PrivacyPolicyDialog>
               </li>
             </ul>
           </div>
