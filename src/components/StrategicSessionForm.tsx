@@ -98,8 +98,8 @@ Enviado em: ${new Date().toLocaleString('pt-BR')}
 
       // Configurar EmailJS com suas credenciais
       await emailjs.send(
-        'YOUR_SERVICE_ID', // Substitua pelo seu Service ID do EmailJS
-        'YOUR_TEMPLATE_ID', // Substitua pelo seu Template ID do EmailJS
+        'service_soq4zxl', // Substitua pelo seu Service ID do EmailJS
+        'template_0osw7ti', // Substitua pelo seu Template ID do EmailJS
         {
           to_email: 'alexandre@mxmo.com.br',
           from_name: data.name,
@@ -107,7 +107,7 @@ Enviado em: ${new Date().toLocaleString('pt-BR')}
           message: message,
           subject: `Nova Sessão Estratégica - ${data.name} (${data.company})`
         },
-        'YOUR_PUBLIC_KEY' // Substitua pela sua Public Key do EmailJS
+        'bDrIc2tRtXZjSbaMi' // Substitua pela sua Public Key do EmailJS
       );
       
       toast({
