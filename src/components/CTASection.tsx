@@ -97,10 +97,11 @@ const CTASection = () => {
                 </p>
               </div>
               
-              <div className="bg-primary/20 border border-primary/30 rounded-lg p-4 backdrop-blur-sm">
-                <div className="flex items-center justify-center gap-2 text-primary font-semibold">
-                  <Calendar className="w-4 h-4" />
-                  Apenas 10 vagas disponíveis este mês
+              <div className="bg-gradient-to-r from-primary/30 to-accent/30 border-2 border-primary/50 rounded-xl p-4 backdrop-blur-sm animate-pulse hover:scale-105 transition-all duration-300 shadow-lg">
+                <div className="flex items-center justify-center gap-2 text-white font-bold">
+                  <Calendar className="w-5 h-5 text-primary animate-bounce" />
+                  <span className="text-lg">Apenas 10 vagas disponíveis este mês</span>
+                  <div className="w-2 h-2 bg-primary rounded-full animate-ping"></div>
                 </div>
               </div>
             </div>
