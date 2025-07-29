@@ -17,14 +17,12 @@ const Navbar = () => {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      isScrolled ? "bg-background/95 backdrop-blur-md shadow-lg" : "bg-transparent"
-    }`}>
+    <nav className="fixed top-0 w-full z-50 bg-foreground/95 backdrop-blur-md shadow-lg transition-all duration-300">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           <div className="flex-shrink-0">
             <img 
-              src="/lovable-uploads/f2840262-7b96-455c-a24c-48be5c0e2ee5.png" 
+              src="/lovable-uploads/e0d7654f-584f-4726-95e1-e2f81e68a227.png" 
               alt="MXMO Logo"
               className="h-8 w-auto"
             />
@@ -32,10 +30,10 @@ const Navbar = () => {
 
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
-              <a href="#processo" className="nav-link">Processo</a>
-              <a href="#plataforma" className="nav-link">Plataforma</a>
-              <a href="#problemas" className="nav-link">Problemas</a>
-              <a href="#contato" className="nav-link">Contato</a>
+              <a href="#processo" className="nav-link text-white/80 hover:text-white">Processo</a>
+              <a href="#plataforma" className="nav-link text-white/80 hover:text-white">Plataforma</a>
+              <a href="#problemas" className="nav-link text-white/80 hover:text-white">Problemas</a>
+              <a href="#contato" className="nav-link text-white/80 hover:text-white">Contato</a>
             </div>
           </div>
 
@@ -49,7 +47,7 @@ const Navbar = () => {
           <div className="md:hidden">
             <button
               onClick={toggleMenu}
-              className="text-foreground hover:text-primary transition-colors"
+              className="text-white hover:text-primary transition-colors"
             >
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
