@@ -16,7 +16,7 @@ const FounderSection = () => {
               Conheça <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">Alexandre Máximo</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Founder & CEO que transformou sua experiência em uma missão de impacto exponencial
+              Transformou sua experiência em uma missão de impacto exponencial
             </p>
           </div>
 
@@ -47,14 +47,6 @@ const FounderSection = () => {
             {/* Content Side */}
             <div className="order-1 lg:order-2 animate-on-scroll">
               <div className="space-y-6">
-                <div>
-                  <h3 className="text-2xl sm:text-3xl font-display font-bold mb-2">
-                    Alexandre Máximo
-                  </h3>
-                  <p className="text-primary font-semibold text-lg mb-4">
-                    Founder & CEO MXMO
-                  </p>
-                </div>
 
                 <div className="prose prose-lg text-muted-foreground">
                   <p>
@@ -77,7 +69,7 @@ const FounderSection = () => {
                     <div className="text-sm text-muted-foreground">Anos de Experiência</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-primary">100+</div>
+                    <div className="text-2xl font-bold text-primary">50+</div>
                     <div className="text-sm text-muted-foreground">Projetos Executados</div>
                   </div>
                   <div className="text-center">
@@ -86,29 +78,6 @@ const FounderSection = () => {
                   </div>
                 </div>
 
-                {/* Personal Touch */}
-                <div className="bg-muted/50 rounded-lg p-4">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Users className="w-5 h-5 text-primary" />
-                    <span className="font-semibold">Vida Pessoal</span>
-                  </div>
-                  <p className="text-sm text-muted-foreground">
-                    Casado com Roane Máximo e pai dedicado de 4 filhos. Acredita que o sucesso 
-                    nos negócios começa com valores sólidos e propósito claro.
-                  </p>
-                </div>
-
-                {/* Mission */}
-                <div className="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-lg p-4">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Target className="w-5 h-5 text-primary" />
-                    <span className="font-semibold">Missão Atual</span>
-                  </div>
-                  <p className="text-sm">
-                    Impactar e fazer prosperar empresas, pessoas e economia através de 
-                    estratégias de crescimento exponencial e transformação digital.
-                  </p>
-                </div>
               </div>
             </div>
           </div>
