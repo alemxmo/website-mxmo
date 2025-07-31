@@ -1,6 +1,6 @@
 // lovable.config.js
 module.exports = {
-  entry: './src/index.js',        // ou o seu entrypoint correto
+  entry: './src/app.js',
   output: {
     filename: 'bundle.js',
     path: __dirname + '/build'
