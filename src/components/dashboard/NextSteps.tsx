@@ -2,38 +2,44 @@ import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Calendar, FileText, Users, Clock } from "lucide-react";
+import { CompanyData } from "@/hooks/useCompanyData";
 
-const NextSteps = () => {
-  const upcomingTasks = [
-    {
-      title: "Reunião de Alinhamento",
-      date: "15 Nov, 14:00",
-      type: "meeting",
-      icon: Users,
-      description: "Revisão da Fase 2 e planejamento da Fase 3"
-    },
-    {
-      title: "Relatório Mensal",
-      date: "18 Nov",
-      type: "document",
-      icon: FileText,
-      description: "Análise de performance e métricas"
-    },
-    {
-      title: "Workshop de Implementação",
-      date: "22 Nov, 09:00",
-      type: "workshop",
-      icon: Calendar,
-      description: "Treinamento da equipe nas novas ferramentas"
-    }
-  ];
+interface NextStepsProps {
+  data: CompanyData | null;
+}
 
-  const documents = [
-    { name: "Relatório de Diagnóstico Completo", status: "available" },
-    { name: "Plano de Arquitetura de Crescimento", status: "available" },
-    { name: "Manual de Implementação", status: "pending" },
-    { name: "Dashboard de Métricas", status: "available" }
-  ];
+const NextSteps = ({ data }: NextStepsProps) => {
+  const getStepIcon = (index: number) => {
+    const icons = [Calendar, Users, FileText, Clock];
+    return icons[index % icons.length];
+  };
+
+  if (!data) {
+    return (
+      <div className="col-span-full grid lg:grid-cols-2 gap-6">
+        <Card className="shadow-lg animate-pulse">
+          <CardHeader>
+            <div className="h-6 bg-slate-200 rounded w-1/2"></div>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            {[1, 2, 3].map((index) => (
+              <div key={index} className="h-16 bg-slate-200 rounded"></div>
+            ))}
+          </CardContent>
+        </Card>
+        <Card className="shadow-lg animate-pulse">
+          <CardHeader>
+            <div className="h-6 bg-slate-200 rounded w-1/2"></div>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            {[1, 2, 3, 4].map((index) => (
+              <div key={index} className="h-12 bg-slate-200 rounded"></div>
+            ))}
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
 
   return (
     <div className="col-span-full grid lg:grid-cols-2 gap-6">
@@ -45,18 +51,21 @@ const NextSteps = () => {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          {upcomingTasks.map((task, index) => (
-            <div key={index} className="bg-slate-50 rounded-lg p-4 border-l-4 border-l-blue-500">
-              <div className="flex items-start gap-3">
-                <task.icon className="h-5 w-5 text-blue-600 mt-1" />
-                <div className="flex-1">
-                  <h4 className="font-semibold text-slate-800">{task.title}</h4>
-                  <p className="text-sm text-slate-600 mb-1">{task.description}</p>
-                  <span className="text-xs text-blue-600 font-medium">{task.date}</span>
+          {data.nextSteps.map((step, index) => {
+            const IconComponent = getStepIcon(index);
+            return (
+              <div key={index} className="bg-slate-50 rounded-lg p-4 border-l-4 border-l-blue-500">
+                <div className="flex items-start gap-3">
+                  <IconComponent className="h-5 w-5 text-blue-600 mt-1" />
+                  <div className="flex-1">
+                    <h4 className="font-semibold text-slate-800">{step.title}</h4>
+                    <p className="text-sm text-slate-600 mb-1">{step.description}</p>
+                    <span className="text-xs text-blue-600 font-medium">{step.date}</span>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </CardContent>
       </Card>
 
@@ -68,7 +77,7 @@ const NextSteps = () => {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-3">
-          {documents.map((doc, index) => (
+          {data.documents.map((doc, index) => (
             <div key={index} className="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
               <div className="flex items-center gap-3">
                 <FileText className="h-4 w-4 text-slate-600" />
@@ -76,11 +85,11 @@ const NextSteps = () => {
               </div>
               <Button 
                 size="sm" 
-                variant={doc.status === "available" ? "default" : "outline"}
-                disabled={doc.status === "pending"}
+                variant={doc.available ? "default" : "outline"}
+                disabled={!doc.available}
                 className="text-xs"
               >
-                {doc.status === "available" ? "Acessar" : "Em breve"}
+                {doc.available ? "Acessar" : "Em breve"}
               </Button>
             </div>
           ))}

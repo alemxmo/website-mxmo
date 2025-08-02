@@ -2,23 +2,38 @@ import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from "recharts";
 import { BarChart3 } from "lucide-react";
+import { CompanyData } from "@/hooks/useCompanyData";
 
-const ProgressChart = () => {
-  // Mock data - em produção viria de API/planilha
-  const timelineData = [
-    { month: 'Jan', fase1: 100, fase2: 0, fase3: 0 },
-    { month: 'Fev', fase1: 100, fase2: 20, fase3: 0 },
-    { month: 'Mar', fase1: 100, fase2: 45, fase3: 0 },
-    { month: 'Abr', fase1: 100, fase2: 75, fase3: 10 },
-    { month: 'Mai', fase1: 100, fase2: 100, fase3: 25 },
-    { month: 'Jun', fase1: 100, fase2: 100, fase3: 50 },
-  ];
+interface ProgressChartProps {
+  data: CompanyData | null;
+}
 
-  const phaseProgress = [
-    { phase: 'Diagnóstico', completed: 100, remaining: 0 },
-    { phase: 'Arquitetura', completed: 75, remaining: 25 },
-    { phase: 'Execução', completed: 25, remaining: 75 },
-  ];
+const ProgressChart = ({ data }: ProgressChartProps) => {
+  if (!data) {
+    return (
+      <div className="col-span-full grid lg:grid-cols-2 gap-6">
+        <Card className="shadow-lg animate-pulse">
+          <CardHeader>
+            <div className="h-6 bg-slate-200 rounded w-1/2"></div>
+          </CardHeader>
+          <CardContent>
+            <div className="h-64 bg-slate-200 rounded"></div>
+          </CardContent>
+        </Card>
+        <Card className="shadow-lg animate-pulse">
+          <CardHeader>
+            <div className="h-6 bg-slate-200 rounded w-1/2"></div>
+          </CardHeader>
+          <CardContent>
+            <div className="h-64 bg-slate-200 rounded"></div>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
+
+  const timelineData = data.timeline;
+  const phaseProgress = data.phaseProgress;
 
   return (
     <div className="col-span-full grid lg:grid-cols-2 gap-6">
@@ -48,14 +63,14 @@ const ProgressChart = () => {
                 dataKey="fase2" 
                 stroke="#3b82f6" 
                 strokeWidth={3}
-                name="Arquitetura"
+                name="Implementação"
               />
               <Line 
                 type="monotone" 
                 dataKey="fase3" 
                 stroke="#8b5cf6" 
                 strokeWidth={3}
-                name="Execução"
+                name="Validação"
               />
             </LineChart>
           </ResponsiveContainer>
@@ -71,7 +86,7 @@ const ProgressChart = () => {
             <BarChart data={phaseProgress} layout="horizontal">
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis type="number" domain={[0, 100]} />
-              <YAxis dataKey="phase" type="category" width={80} />
+              <YAxis dataKey="phase" type="category" width={120} />
               <Tooltip />
               <Bar dataKey="completed" stackId="a" fill="#3b82f6" name="Concluído" />
               <Bar dataKey="remaining" stackId="a" fill="#e5e7eb" name="Pendente" />

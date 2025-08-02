@@ -1,0 +1,81 @@
+{
+  "empresa": "ATHON",
+  "projectOverview": {
+    "currentPhase": "Fase 1 - Análise",
+    "progress": 45,
+    "nextMilestone": "Entrega do Diagnóstico Completo",
+    "daysRemaining": 8
+  },
+  "kpis": [
+    {
+      "title": "Faturamento Impactado",
+      "value": "R$ 1.2M",
+      "target": "R$ 3.5M",
+      "progress": 34,
+      "description": "Meta vs. Realizado"
+    },
+    {
+      "title": "Oportunidades",
+      "value": "15",
+      "target": "40",
+      "progress": 38,
+      "description": "Identificadas e Capturadas"
+    },
+    {
+      "title": "Entregas Validadas",
+      "value": "5",
+      "target": "15",
+      "progress": 33,
+      "description": "Marcos Concluídos"
+    },
+    {
+      "title": "ROI Projetado",
+      "value": "180%",
+      "target": "450%",
+      "progress": 40,
+      "description": "Retorno sobre Investimento"
+    }
+  ],
+  "timeline": [
+    { "month": "Jan", "fase1": 45, "fase2": 0, "fase3": 0 },
+    { "month": "Fev", "fase1": 75, "fase2": 15, "fase3": 0 },
+    { "month": "Mar", "fase1": 100, "fase2": 40, "fase3": 0 },
+    { "month": "Abr", "fase1": 100, "fase2": 70, "fase3": 20 },
+    { "month": "Mai", "fase1": 100, "fase2": 100, "fase3": 50 },
+    { "month": "Jun", "fase1": 100, "fase2": 100, "fase3": 85 }
+  ],
+  "phaseProgress": [
+    { "phase": "Análise & Diagnóstico", "completed": 45, "remaining": 55 },
+    { "phase": "Implementação", "completed": 0, "remaining": 100 },
+    { "phase": "Validação & Entrega", "completed": 0, "remaining": 100 }
+  ],
+  "insights": [
+    {
+      "type": "insight",
+      "title": "Diagnóstico em Andamento",
+      "content": "Identificados 3 gargalos principais no processo atual de vendas."
+    },
+    {
+      "type": "action",
+      "title": "Próxima Reunião",
+      "content": "Agendar workshop com equipe comercial para validação das descobertas."
+    }
+  ],
+  "nextSteps": [
+    {
+      "title": "Workshop Validação",
+      "date": "10 Fev",
+      "description": "Sessão com stakeholders para validar achados do diagnóstico"
+    },
+    {
+      "title": "Entrega Diagnóstico",
+      "date": "18 Fev",
+      "description": "Apresentação completa dos resultados da análise"
+    }
+  ],
+  "documents": [
+    { "name": "Diagnóstico Preliminar", "available": true },
+    { "name": "Análise de Processos", "available": false },
+    { "name": "Plano de Implementação", "available": false }
+  ]
+}

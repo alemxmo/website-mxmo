@@ -1,0 +1,92 @@
+{
+  "empresa": "TECH",
+  "projectOverview": {
+    "currentPhase": "Fase 2 - Implementação",
+    "progress": 38,
+    "nextMilestone": "Entrega Módulo Analytics",
+    "daysRemaining": 18
+  },
+  "kpis": [
+    {
+      "title": "Faturamento Impactado",
+      "value": "R$ 980K",
+      "target": "R$ 2.8M",
+      "progress": 35,
+      "description": "Meta vs. Realizado"
+    },
+    {
+      "title": "Oportunidades",
+      "value": "12",
+      "target": "32",
+      "progress": 38,
+      "description": "Identificadas e Capturadas"
+    },
+    {
+      "title": "Entregas Validadas",
+      "value": "6",
+      "target": "16",
+      "progress": 38,
+      "description": "Marcos Concluídos"
+    },
+    {
+      "title": "ROI Projetado",
+      "value": "145%",
+      "target": "380%",
+      "progress": 38,
+      "description": "Retorno sobre Investimento"
+    }
+  ],
+  "timeline": [
+    { "month": "Jan", "fase1": 85, "fase2": 25, "fase3": 0 },
+    { "month": "Fev", "fase1": 100, "fase2": 38, "fase3": 0 },
+    { "month": "Mar", "fase1": 100, "fase2": 65, "fase3": 15 },
+    { "month": "Abr", "fase1": 100, "fase2": 90, "fase3": 35 },
+    { "month": "Mai", "fase1": 100, "fase2": 100, "fase3": 60 },
+    { "month": "Jun", "fase1": 100, "fase2": 100, "fase3": 85 }
+  ],
+  "phaseProgress": [
+    { "phase": "Análise & Diagnóstico", "completed": 100, "remaining": 0 },
+    { "phase": "Implementação", "completed": 38, "remaining": 62 },
+    { "phase": "Validação & Entrega", "completed": 0, "remaining": 100 }
+  ],
+  "insights": [
+    {
+      "type": "alert",
+      "title": "Atenção no Cronograma",
+      "content": "Implementação ligeiramente atrasada. Revisar recursos alocados."
+    },
+    {
+      "type": "action",
+      "title": "Sprint Planning",
+      "content": "Reorganizar sprints para acelerar desenvolvimento do módulo analytics."
+    },
+    {
+      "type": "insight",
+      "title": "Feedback Positivo",
+      "content": "Equipe cliente muito satisfeita com qualidade das entregas até agora."
+    }
+  ],
+  "nextSteps": [
+    {
+      "title": "Sprint Review",
+      "date": "08 Fev",
+      "description": "Revisão do progresso e ajustes no cronograma"
+    },
+    {
+      "title": "Demo Módulo Analytics",
+      "date": "22 Fev",
+      "description": "Apresentação do módulo para stakeholders"
+    },
+    {
+      "title": "Checkpoint Mensal",
+      "date": "28 Fev",
+      "description": "Avaliação geral do projeto e próximos passos"
+    }
+  ],
+  "documents": [
+    { "name": "Status Report", "available": true },
+    { "name": "Documentação Técnica", "available": true },
+    { "name": "Plano de Recuperação", "available": false },
+    { "name": "Análise de Riscos", "available": false }
+  ]
+}

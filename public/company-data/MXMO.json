@@ -1,0 +1,82 @@
+{
+  "empresa": "MXMO",
+  "projectOverview": {
+    "currentPhase": "Fase 3 - Validação",
+    "progress": 92,
+    "nextMilestone": "Finalização do Projeto",
+    "daysRemaining": 5
+  },
+  "kpis": [
+    {
+      "title": "Faturamento Impactado",
+      "value": "R$ 5.2M",
+      "target": "R$ 5.5M",
+      "progress": 95,
+      "description": "Meta vs. Realizado"
+    },
+    {
+      "title": "Oportunidades",
+      "value": "48",
+      "target": "50",
+      "progress": 96,
+      "description": "Identificadas e Capturadas"
+    },
+    {
+      "title": "Entregas Validadas",
+      "value": "22",
+      "target": "24",
+      "progress": 92,
+      "description": "Marcos Concluídos"
+    },
+    {
+      "title": "ROI Projetado",
+      "value": "680%",
+      "target": "700%",
+      "progress": 97,
+      "description": "Retorno sobre Investimento"
+    }
+  ],
+  "timeline": [
+    { "month": "Jan", "fase1": 100, "fase2": 100, "fase3": 60 },
+    { "month": "Fev", "fase1": 100, "fase2": 100, "fase3": 92 },
+    { "month": "Mar", "fase1": 100, "fase2": 100, "fase3": 100 },
+    { "month": "Abr", "fase1": 100, "fase2": 100, "fase3": 100 },
+    { "month": "Mai", "fase1": 100, "fase2": 100, "fase3": 100 },
+    { "month": "Jun", "fase1": 100, "fase2": 100, "fase3": 100 }
+  ],
+  "phaseProgress": [
+    { "phase": "Análise & Diagnóstico", "completed": 100, "remaining": 0 },
+    { "phase": "Implementação", "completed": 100, "remaining": 0 },
+    { "phase": "Validação & Entrega", "completed": 92, "remaining": 8 }
+  ],
+  "insights": [
+    {
+      "type": "insight",
+      "title": "Projeto Quase Finalizado",
+      "content": "Excelente performance em todos os KPIs. Projeto modelo para futuros clientes."
+    },
+    {
+      "type": "action",
+      "title": "Documentação Final",
+      "content": "Compilar case de sucesso para apresentação executiva."
+    }
+  ],
+  "nextSteps": [
+    {
+      "title": "Revisão Final",
+      "date": "05 Fev",
+      "description": "Validação final de todos os entregáveis"
+    },
+    {
+      "title": "Apresentação Executiva",
+      "date": "07 Fev",
+      "description": "Apresentação dos resultados para C-Level"
+    }
+  ],
+  "documents": [
+    { "name": "Case de Sucesso", "available": true },
+    { "name": "Relatório Executivo", "available": true },
+    { "name": "ROI Detalhado", "available": true },
+    { "name": "Recomendações Futuras", "available": true }
+  ]
+}
