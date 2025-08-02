@@ -53,7 +53,19 @@ export const useCompanyData = (empresa: string) => {
         setLoading(true);
         setError(null);
         
-        const response = await fetch(`/company-data/${empresa}.json`);
+        // Primeiro busca o arquivo de login para pegar o caminho do JSON
+        const loginResponse = await fetch('/emp_lgn.txt');
+        const loginText = await loginResponse.text();
+        
+        const lines = loginText.trim().split('\n');
+        const companyLine = lines.find(line => line.startsWith(`${empresa}:`));
+        
+        if (!companyLine) {
+          throw new Error(`Empresa ${empresa} não encontrada`);
+        }
+        
+        const [, , jsonPath] = companyLine.split(':');
+        const response = await fetch(jsonPath);
         
         if (!response.ok) {
           throw new Error(`Dados não encontrados para a empresa ${empresa}`);

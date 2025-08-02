@@ -1,4 +1,4 @@
-ATHON:2345:https://docs.google.com/spreadsheets/d/1V9PRjnYDtOZ7WCfJP294JOSf5wBWl1szLoByqDo1aY4/edit?usp=sharing
-LLT:1234:https://docs.google.com/spreadsheets/d/1V9PRjnYDtOZ7WCfJP294JOSf5wBWl1szLoByqDo1aY4/edit?usp=sharing
-MXMO:5678:https://docs.google.com/spreadsheets/d/1V9PRjnYDtOZ7WCfJP294JOSf5wBWl1szLoByqDo1aY4/edit?usp=sharing
-TECH:9999:https://docs.google.com/spreadsheets/d/1V9PRjnYDtOZ7WCfJP294JOSf5wBWl1szLoByqDo1aY4/edit?usp=sharing
+ATHON:2345:/company-data/ATHON.json
+LLT:1234:/company-data/LLT.json
+MXMO:5678:/company-data/MXMO.json
+TECH:9999:/company-data/TECH.json
