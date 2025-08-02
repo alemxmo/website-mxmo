@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import StrategicSessionForm from "./StrategicSessionForm";
+import ClientLoginModal from "./ClientLoginModal";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -38,9 +38,9 @@ const Navbar = () => {
           </div>
 
           <div className="hidden md:block">
-            <StrategicSessionForm 
+            <ClientLoginModal 
               triggerClassName="button-primary"
-              triggerText="Sessão Estratégica"
+              triggerText="Área do Cliente MXMO"
             />
           </div>
 
@@ -62,10 +62,10 @@ const Navbar = () => {
               <a href="#problemas" className="mobile-nav-link" onClick={toggleMenu}>Problemas</a>
               <a href="#contato" className="mobile-nav-link" onClick={toggleMenu}>Contato</a>
               <div className="pt-4">
-                <StrategicSessionForm 
+                <ClientLoginModal 
                   trigger={
                     <button className="button-primary w-full text-center" onClick={toggleMenu}>
-                      Sessão Estratégica
+                      Área do Cliente MXMO
                     </button>
                   }
                 />
