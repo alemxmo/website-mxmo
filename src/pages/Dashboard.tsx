@@ -1,7 +1,12 @@
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import DashboardHeader from "@/components/dashboard/DashboardHeader";
+import ProjectOverview from "@/components/dashboard/ProjectOverview";
+import KPICards from "@/components/dashboard/KPICards";
+import ProgressChart from "@/components/dashboard/ProgressChart";
+import AIInsights from "@/components/dashboard/AIInsights";
+import NextSteps from "@/components/dashboard/NextSteps";
+import CompanyDNA from "@/components/dashboard/CompanyDNA";
 
 const Dashboard = () => {
   const { empresa } = useParams<{ empresa: string }>();
@@ -11,110 +16,43 @@ const Dashboard = () => {
     navigate("/");
   };
 
+  if (!empresa) {
+    return <div>Empresa não encontrada</div>;
+  }
+
   return (
-    <div className="min-h-screen bg-background">
-      <header className="bg-foreground text-white p-4">
-        <div className="container mx-auto flex items-center justify-between">
-          <div className="flex items-center space-x-4">
-            <img 
-              src="/lovable-uploads/e0d7654f-584f-4726-95e1-e2f81e68a227.png" 
-              alt="MXMO Logo"
-              className="h-8 w-auto"
-            />
-            <h1 className="text-xl font-bold">Dashboard - {empresa}</h1>
-          </div>
-          <Button 
-            variant="destructive" 
-            onClick={handleLogout} 
-            className="bg-red-600 hover:bg-red-700 text-white border-0 shadow-md hover:shadow-lg transition-all duration-300"
-          >
-            Sair
-          </Button>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
+      <DashboardHeader empresa={empresa} onLogout={handleLogout} />
+      
+      <main className="container mx-auto p-6 space-y-8">
+        {/* Visão Geral do Projeto */}
+        <div className="grid gap-6">
+          <ProjectOverview empresa={empresa} />
         </div>
-      </header>
 
-      <main className="container mx-auto p-6">
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          <Card>
-            <CardHeader>
-              <CardTitle>Bem-vindo, {empresa}!</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground">
-                Este é o dashboard exclusivo da sua empresa. Aqui você terá acesso aos dados e relatórios personalizados.
-              </p>
-            </CardContent>
-          </Card>
+        {/* KPIs Estratégicos */}
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <KPICards />
+        </div>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>Relatórios</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground">
-                Acesse relatórios detalhados e análises específicas para {empresa}.
-              </p>
-              <Button className="mt-4" disabled>
-                Ver Relatórios
-              </Button>
-            </CardContent>
-          </Card>
+        {/* Gráficos de Progresso */}
+        <div className="grid gap-6">
+          <ProgressChart />
+        </div>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>Planilhas</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground">
-                Consulte e baixe planilhas exclusivas da sua empresa.
-              </p>
-              <Button className="mt-4" disabled>
-                Acessar Planilhas
-              </Button>
-            </CardContent>
-          </Card>
+        {/* Alertas & Recomendações AI */}
+        <div className="grid gap-6">
+          <AIInsights />
+        </div>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>Suporte</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground">
-                Entre em contato com nossa equipe de suporte técnico.
-              </p>
-              <Button className="mt-4" disabled>
-                Contatar Suporte
-              </Button>
-            </CardContent>
-          </Card>
+        {/* Próximos Passos e Documentos */}
+        <div className="grid gap-6">
+          <NextSteps />
+        </div>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>Configurações</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground">
-                Gerencie as configurações da conta da sua empresa.
-              </p>
-              <Button className="mt-4" disabled>
-                Configurações
-              </Button>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle>Histórico</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground">
-                Visualize o histórico de atividades e acessos.
-              </p>
-              <Button className="mt-4" disabled>
-                Ver Histórico
-              </Button>
-            </CardContent>
-          </Card>
+        {/* DNA MXMO */}
+        <div className="grid gap-6">
+          <CompanyDNA />
         </div>
       </main>
     </div>
