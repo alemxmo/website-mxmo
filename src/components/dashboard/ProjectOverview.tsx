@@ -31,22 +31,15 @@ const ProjectOverview = ({ empresa, data }: ProjectOverviewProps) => {
 
   const projectData = data.projectOverview;
 
-  // Timeline das fases
-  const phases = [
-    { name: "Diagnóstico", status: "completed", icon: CheckCircle2 },
-    { name: "Implementação", status: "current", icon: Clock },
-    { name: "Validação", status: "pending", icon: Target }
-  ];
+  // Timeline das fases - busca do JSON
+  const phases = data.phaseProgress.map((phase, index) => ({
+    name: phase.phase,
+    status: phase.completed === 100 ? "completed" : phase.completed > 0 ? "current" : "pending",
+    icon: index === 0 ? CheckCircle2 : index === 1 ? Clock : Target
+  }));
 
-  const getPhaseStatus = (index: number, currentPhase: string) => {
-    if (currentPhase.includes("Fase 1") || currentPhase.includes("Análise")) {
-      return index === 0 ? "current" : "pending";
-    } else if (currentPhase.includes("Fase 2") || currentPhase.includes("Implementação")) {
-      return index === 0 ? "completed" : index === 1 ? "current" : "pending";
-    } else if (currentPhase.includes("Fase 3") || currentPhase.includes("Validação")) {
-      return index <= 1 ? "completed" : "current";
-    }
-    return "pending";
+  const getPhaseStatus = (phase: any) => {
+    return phase.status;
   };
 
   return (
@@ -95,7 +88,7 @@ const ProjectOverview = ({ empresa, data }: ProjectOverviewProps) => {
           <h3 className="font-semibold text-slate-800">Timeline do Projeto</h3>
           <div className="flex items-center justify-between relative">
             {phases.map((phase, index) => {
-              const status = getPhaseStatus(index, projectData.currentPhase);
+              const status = getPhaseStatus(phase);
               const IconComponent = phase.icon;
               
               return (

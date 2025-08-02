@@ -74,7 +74,11 @@
     }
   ],
   "documents": [
-    { "name": "Diagnóstico Preliminar", "available": true },
+    { 
+      "name": "Diagnóstico Preliminar", 
+      "available": true,
+      "link": "https://docs.google.com/spreadsheets/d/1V9PRjnYDtOZ7WCfJP294JOSf5wBWl1szLoByqDo1aY4/edit?usp=sharing"
+    },
     { "name": "Análise de Processos", "available": false },
     { "name": "Plano de Implementação", "available": false }
   ]

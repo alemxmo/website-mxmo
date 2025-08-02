@@ -84,8 +84,16 @@
     }
   ],
   "documents": [
-    { "name": "Status Report", "available": true },
-    { "name": "Documentação Técnica", "available": true },
+    { 
+      "name": "Status Report", 
+      "available": true,
+      "link": "https://docs.google.com/spreadsheets/d/1V9PRjnYDtOZ7WCfJP294JOSf5wBWl1szLoByqDo1aY4/edit?usp=sharing"
+    },
+    { 
+      "name": "Documentação Técnica", 
+      "available": true,
+      "link": "https://docs.google.com/spreadsheets/d/1V9PRjnYDtOZ7WCfJP294JOSf5wBWl1szLoByqDo1aY4/edit?usp=sharing"
+    },
     { "name": "Plano de Recuperação", "available": false },
     { "name": "Análise de Riscos", "available": false }
   ]

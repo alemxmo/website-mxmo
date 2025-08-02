@@ -77,10 +77,7 @@ const AIInsights = ({ data }: AIInsightsProps) => {
                 <IconComponent className={`h-5 w-5 ${colors.color} mt-1 flex-shrink-0`} />
                 <div className="flex-1">
                   <h4 className={`font-semibold ${colors.color} mb-2`}>{insight.title}</h4>
-                  <p className="text-slate-700 text-sm mb-3">{insight.content}</p>
-                  <Button size="sm" variant="outline" className="text-xs">
-                    Ver Detalhes
-                  </Button>
+                  <p className="text-slate-700 text-sm">{insight.content}</p>
                 </div>
               </div>
             </div>

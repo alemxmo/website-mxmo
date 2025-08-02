@@ -81,17 +81,21 @@ const ProgressChart = ({ data }: ProgressChartProps) => {
         <CardHeader>
           <CardTitle className="text-slate-800">Progresso por Fase</CardTitle>
         </CardHeader>
-        <CardContent>
-          <ResponsiveContainer width="100%" height={300}>
-            <BarChart data={phaseProgress} layout="horizontal">
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis type="number" domain={[0, 100]} />
-              <YAxis dataKey="phase" type="category" width={120} />
-              <Tooltip />
-              <Bar dataKey="completed" stackId="a" fill="#3b82f6" name="Concluído" />
-              <Bar dataKey="remaining" stackId="a" fill="#e5e7eb" name="Pendente" />
-            </BarChart>
-          </ResponsiveContainer>
+        <CardContent className="space-y-4">
+          {phaseProgress.map((phase, index) => (
+            <div key={index} className="space-y-2">
+              <div className="flex justify-between items-center">
+                <span className="text-sm font-medium text-slate-700">{phase.phase}</span>
+                <span className="text-sm text-slate-600">{phase.completed}%</span>
+              </div>
+              <div className="w-full bg-gray-200 rounded-full h-3">
+                <div 
+                  className="bg-gradient-to-r from-blue-500 to-blue-600 h-3 rounded-full transition-all duration-300"
+                  style={{ width: `${phase.completed}%` }}
+                ></div>
+              </div>
+            </div>
+          ))}
         </CardContent>
       </Card>
     </div>

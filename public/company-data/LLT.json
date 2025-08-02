@@ -84,8 +84,16 @@
     }
   ],
   "documents": [
-    { "name": "Relatório de Progresso", "available": true },
-    { "name": "Análise de ROI", "available": true },
+    { 
+      "name": "Relatório de Progresso", 
+      "available": true,
+      "link": "https://docs.google.com/spreadsheets/d/1V9PRjnYDtOZ7WCfJP294JOSf5wBWl1szLoByqDo1aY4/edit?usp=sharing"
+    },
+    { 
+      "name": "Análise de ROI", 
+      "available": true,
+      "link": "https://docs.google.com/spreadsheets/d/1V9PRjnYDtOZ7WCfJP294JOSf5wBWl1szLoByqDo1aY4/edit?usp=sharing"
+    },
     { "name": "Documentação Técnica", "available": false },
     { "name": "Manual do Usuário", "available": false }
   ]

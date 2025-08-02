@@ -39,6 +39,7 @@ export interface CompanyData {
   documents: Array<{
     name: string;
     available: boolean;
+    link?: string;
   }>;
 }
 

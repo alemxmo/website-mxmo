@@ -83,14 +83,25 @@ const NextSteps = ({ data }: NextStepsProps) => {
                 <FileText className="h-4 w-4 text-slate-600" />
                 <span className="text-sm font-medium text-slate-700">{doc.name}</span>
               </div>
-              <Button 
-                size="sm" 
-                variant={doc.available ? "default" : "outline"}
-                disabled={!doc.available}
-                className="text-xs"
-              >
-                {doc.available ? "Acessar" : "Em breve"}
-              </Button>
+              {doc.available ? (
+                <Button 
+                  size="sm" 
+                  variant="default"
+                  className="text-xs"
+                  onClick={() => window.open(doc.link, '_blank')}
+                >
+                  Acessar
+                </Button>
+              ) : (
+                <Button 
+                  size="sm" 
+                  variant="outline"
+                  disabled
+                  className="text-xs"
+                >
+                  Em breve
+                </Button>
+              )}
             </div>
           ))}
         </CardContent>

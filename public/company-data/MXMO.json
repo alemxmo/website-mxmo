@@ -74,9 +74,25 @@
     }
   ],
   "documents": [
-    { "name": "Case de Sucesso", "available": true },
-    { "name": "Relatório Executivo", "available": true },
-    { "name": "ROI Detalhado", "available": true },
-    { "name": "Recomendações Futuras", "available": true }
+    { 
+      "name": "Case de Sucesso", 
+      "available": true,
+      "link": "https://docs.google.com/spreadsheets/d/1V9PRjnYDtOZ7WCfJP294JOSf5wBWl1szLoByqDo1aY4/edit?usp=sharing"
+    },
+    { 
+      "name": "Relatório Executivo", 
+      "available": true,
+      "link": "https://docs.google.com/spreadsheets/d/1V9PRjnYDtOZ7WCfJP294JOSf5wBWl1szLoByqDo1aY4/edit?usp=sharing"
+    },
+    { 
+      "name": "ROI Detalhado", 
+      "available": true,
+      "link": "https://docs.google.com/spreadsheets/d/1V9PRjnYDtOZ7WCfJP294JOSf5wBWl1szLoByqDo1aY4/edit?usp=sharing"
+    },
+    { 
+      "name": "Recomendações Futuras", 
+      "available": true,
+      "link": "https://docs.google.com/spreadsheets/d/1V9PRjnYDtOZ7WCfJP294JOSf5wBWl1szLoByqDo1aY4/edit?usp=sharing"
+    }
   ]
 }
