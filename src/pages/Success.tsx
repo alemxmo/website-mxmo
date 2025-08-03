@@ -2,8 +2,21 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle, Rocket, Target, Users, ArrowRight, Clock, Mail, MessageCircle } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
+
+declare global {
+  interface Window {
+    gtag: any;
+  }
+}
 
 export default function Success() {
+  useEffect(() => {
+    // Event snippet for Page view conversion page
+    if (typeof window.gtag !== 'undefined') {
+      window.gtag('event', 'conversion', {'send_to': 'AW-17417716131/EJS0CPrNs_4aEKODtfFA'});
+    }
+  }, []);
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-muted/20 to-background">
       {/* Hero Success Section */}
