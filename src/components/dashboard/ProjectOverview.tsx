@@ -39,6 +39,11 @@ const ProjectOverview = ({ empresa, data }: ProjectOverviewProps) => {
     icon: index === 0 ? CheckCircle2 : index === 1 ? Clock : Target
   }));
 
+  // Calcula o progresso total baseado nas fases
+  const totalProgress = Math.round(
+    data.phaseProgress.reduce((acc, phase) => acc + phase.completed, 0) / data.phaseProgress.length
+  );
+
   const getPhaseStatus = (phase: any) => {
     return phase.status;
   };
@@ -61,8 +66,8 @@ const ProjectOverview = ({ empresa, data }: ProjectOverviewProps) => {
               Fase Atual
             </h3>
             <p className="text-slate-600">{projectData.currentPhase}</p>
-            <Progress value={projectData.progress} className="h-3" />
-            <p className="text-sm text-slate-500">{projectData.progress}% concluído</p>
+            <Progress value={totalProgress} className="h-3" />
+            <p className="text-sm text-slate-500">{totalProgress}% concluído</p>
           </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -129,8 +134,8 @@ const ProjectOverview = ({ empresa, data }: ProjectOverviewProps) => {
           
           {/* Barra de progresso geral na parte inferior */}
           <div className="space-y-2 mt-6">
-            <Progress value={projectData.progress} className="h-3" />
-            <p className="text-center text-sm font-medium text-slate-600">{projectData.progress}% concluído</p>
+            <Progress value={totalProgress} className="h-3" />
+            <p className="text-center text-sm font-medium text-slate-600">{totalProgress}% concluído</p>
           </div>
         </div>
       </CardContent>
