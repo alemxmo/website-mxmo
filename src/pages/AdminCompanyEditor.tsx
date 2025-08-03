@@ -75,29 +75,6 @@ export default function AdminCompanyEditor() {
     loadCompanyData(companyName);
   };
 
-  const saveCompanyJSON = async (companyName: string, data: CompanyData) => {
-    try {
-      const jsonString = JSON.stringify(data, null, 2);
-      
-      // Tentar sobrescrever o arquivo JSON diretamente na pasta company-data
-      const response = await fetch(`/company-data/${companyName}.json`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: jsonString,
-      });
-      
-      if (!response.ok) {
-        throw new Error(`Erro ao salvar arquivo: ${response.statusText}`);
-      }
-      
-      return true;
-    } catch (error) {
-      console.error('Erro ao salvar JSON:', error);
-      throw error;
-    }
-  };
 
   const downloadCompanyJSON = async (companyName: string, data: CompanyData) => {
     try {
@@ -160,43 +137,6 @@ export default function AdminCompanyEditor() {
     }
   };
 
-  const handleSave = async () => {
-    if (!companyData) {
-      toast({
-        variant: "destructive",
-        title: "Erro",
-        description: "Nenhum dado para salvar."
-      });
-      return;
-    }
-    
-    setSaving(true);
-    try {
-      const companyName = selectedCompany || companyData.empresa;
-      
-      if (!companyName) {
-        throw new Error('Nome da empresa não definido');
-      }
-
-      // Salvar o JSON
-      await saveCompanyJSON(companyName, companyData);
-      
-      toast({
-        title: "Sucesso!",
-        description: `Dados da empresa ${companyName} foram atualizados automaticamente.`,
-        duration: 5000
-      });
-    } catch (error) {
-      console.error('Erro ao salvar:', error);
-      toast({
-        variant: "destructive",
-        title: "Erro",
-        description: "Não foi possível salvar os dados da empresa."
-      });
-    } finally {
-      setSaving(false);
-    }
-  };
 
   const handleCreateNew = () => {
     const defaultKPIs = [
@@ -353,26 +293,16 @@ export default function AdminCompanyEditor() {
             {companyData && (
               <div className="flex gap-2 pt-4 border-t">
                 <Button 
-                  onClick={selectedCompany ? handleSave : handleAddNewCompany} 
+                  onClick={selectedCompany ? handleDownload : handleAddNewCompany} 
                   disabled={saving}
                   className="min-w-[150px]"
                 >
-                  {saving ? 'Salvando...' : selectedCompany ? 'Salvar Alterações' : 'Criar Nova Empresa'}
+                  {saving ? 'Baixando...' : selectedCompany ? 'Baixar JSON' : 'Criar Nova Empresa'}
                 </Button>
-                
-                {selectedCompany && (
-                  <Button 
-                    onClick={handleDownload} 
-                    disabled={saving}
-                    variant="outline"
-                  >
-                    Baixar JSON
-                  </Button>
-                )}
                 
                 <div className="text-sm text-muted-foreground flex items-center ml-4">
                   {selectedCompany ? 
-                    'Salvar: atualiza automaticamente | Baixar: faz download do JSON' :
+                    'Baixar: faz download do JSON atualizado' :
                     'Uma nova empresa será criada com arquivos para download'
                   }
                 </div>
