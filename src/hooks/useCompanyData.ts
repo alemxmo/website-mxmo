@@ -23,6 +23,7 @@ export interface CompanyData {
   }>;
   phaseProgress: Array<{
     phase: string;
+    phaseName: string;
     completed: number;
     remaining: number;
   }>;

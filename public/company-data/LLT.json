@@ -45,9 +45,9 @@
     { "month": "Jun", "fase1": 100, "fase2": 100, "fase3": 90 }
   ],
   "phaseProgress": [
-    { "phase": "Análise & Diagnóstico", "completed": 100, "remaining": 0 },
-    { "phase": "Implementação", "completed": 67, "remaining": 33 },
-    { "phase": "Validação & Entrega", "completed": 25, "remaining": 75 }
+    { "phase": "Análise & Diagnóstico", "phaseName": "Diagnóstico", "completed": 100, "remaining": 0 },
+    { "phase": "Implementação", "phaseName": "Plano de Expansão", "completed": 67, "remaining": 33 },
+    { "phase": "Validação & Entrega", "phaseName": "Execução e Otimização", "completed": 25, "remaining": 75 }
   ],
   "insights": [
     {

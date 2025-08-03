@@ -33,7 +33,8 @@ const ProjectOverview = ({ empresa, data }: ProjectOverviewProps) => {
 
   // Timeline das fases - busca do JSON
   const phases = data.phaseProgress.map((phase, index) => ({
-    name: phase.phase,
+    name: phase.phaseName,
+    progress: phase.completed,
     status: phase.completed === 100 ? "completed" : phase.completed > 0 ? "current" : "pending",
     icon: index === 0 ? CheckCircle2 : index === 1 ? Clock : Target
   }));
@@ -84,28 +85,36 @@ const ProjectOverview = ({ empresa, data }: ProjectOverviewProps) => {
         </div>
 
         {/* Timeline das Fases */}
-        <div className="space-y-3">
+        <div className="space-y-4">
           <h3 className="font-semibold text-slate-800">Timeline do Projeto</h3>
-          <div className="flex items-center justify-between relative overflow-x-auto pb-2">
+          
+          {/* Barra de progresso geral */}
+          <div className="space-y-2">
+            <Progress value={projectData.progress} className="h-3" />
+            <p className="text-center text-sm font-medium text-slate-600">{projectData.progress}% concluído</p>
+          </div>
+          
+          {/* Fases do projeto */}
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between relative overflow-x-auto pb-2 gap-4 sm:gap-0">
             {phases.map((phase, index) => {
               const status = getPhaseStatus(phase);
               const IconComponent = phase.icon;
               
               return (
-                <div key={index} className="flex flex-col items-center z-10">
+                <div key={index} className="flex flex-col items-center z-10 min-w-0 flex-1">
                   <div 
                     className={`
-                      w-10 h-10 rounded-full flex items-center justify-center border-2 bg-white
+                      w-12 h-12 rounded-full flex items-center justify-center border-2 bg-white shadow-sm
                       ${status === 'completed' ? 'border-green-500 text-green-600' : 
                         status === 'current' ? 'border-blue-500 text-blue-600' : 
                         'border-gray-300 text-gray-400'}
                     `}
                   >
-                    <IconComponent className="h-5 w-5" />
+                    <IconComponent className="h-6 w-6" />
                   </div>
                   <span 
                     className={`
-                      text-xs mt-2 font-medium text-center whitespace-nowrap max-w-[80px] break-words
+                      text-xs mt-2 font-medium text-center max-w-[100px] break-words leading-tight
                       ${status === 'completed' ? 'text-green-600' : 
                         status === 'current' ? 'text-blue-600' : 
                         'text-gray-400'}
@@ -113,12 +122,15 @@ const ProjectOverview = ({ empresa, data }: ProjectOverviewProps) => {
                   >
                     {phase.name}
                   </span>
+                  <span className="text-xs text-slate-500 mt-1">
+                    {phase.progress}%
+                  </span>
                 </div>
               );
             })}
             
-            {/* Linha conectora */}
-            <div className="absolute top-5 left-5 right-5 h-0.5 bg-gray-200 -z-10"></div>
+            {/* Linha conectora - apenas no desktop */}
+            <div className="hidden sm:block absolute top-6 left-6 right-6 h-0.5 bg-gray-200 -z-10"></div>
           </div>
         </div>
       </CardContent>
