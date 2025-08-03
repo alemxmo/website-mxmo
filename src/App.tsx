@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Dashboard from "./pages/Dashboard";
 import AdminCompanyEditor from "./pages/AdminCompanyEditor";
+import Success from "./pages/Success";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -17,6 +18,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/success" element={<Success />} />
           <Route path="/dashboard/:empresa" element={<Dashboard />} />
           <Route path="/admin/company-editor" element={<AdminCompanyEditor />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
