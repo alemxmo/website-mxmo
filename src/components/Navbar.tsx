@@ -63,11 +63,8 @@ const Navbar = () => {
               <a href="#contato" className="mobile-nav-link" onClick={toggleMenu}>Contato</a>
               <div className="pt-4">
                 <ClientLoginModal 
-                  trigger={
-                    <button className="button-primary w-full text-center" onClick={toggleMenu}>
-                      Área do Cliente MXMO
-                    </button>
-                  }
+                  triggerClassName="button-primary w-full text-center"
+                  triggerText="Área do Cliente MXMO"
                 />
               </div>
             </div>

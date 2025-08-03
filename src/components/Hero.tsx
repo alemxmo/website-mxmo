@@ -93,20 +93,22 @@ const Hero = () => {
           
           {/* Social Proof */}
           <div className="text-center animate-fade-in">
-            <div className="inline-flex items-center gap-8 bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl py-6 px-12">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-primary mb-1">20+</div>
-                <div className="text-sm text-gray-400">Anos de Expertise</div>
+            <div className="inline-flex flex-col sm:flex-row items-center gap-4 sm:gap-8 bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl py-6 px-6 sm:px-12 max-w-full overflow-hidden">
+              <div className="text-center min-w-0 flex-shrink-0">
+                <div className="text-2xl sm:text-3xl font-bold text-primary mb-1">20+</div>
+                <div className="text-xs sm:text-sm text-gray-400 whitespace-nowrap">Anos de Expertise</div>
               </div>
-              <div className="w-px h-12 bg-white/20"></div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-accent mb-1">200%</div>
-                <div className="text-sm text-gray-400">Crescimento Médio</div>
+              <div className="hidden sm:block w-px h-12 bg-white/20"></div>
+              <div className="block sm:hidden w-full h-px bg-white/20"></div>
+              <div className="text-center min-w-0 flex-shrink-0">
+                <div className="text-2xl sm:text-3xl font-bold text-accent mb-1">200%</div>
+                <div className="text-xs sm:text-sm text-gray-400 whitespace-nowrap">Crescimento Médio</div>
               </div>
-              <div className="w-px h-12 bg-white/20"></div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-secondary mb-1">50+</div>
-                <div className="text-sm text-gray-400">Projetos Executados</div>
+              <div className="hidden sm:block w-px h-12 bg-white/20"></div>
+              <div className="block sm:hidden w-full h-px bg-white/20"></div>
+              <div className="text-center min-w-0 flex-shrink-0">
+                <div className="text-2xl sm:text-3xl font-bold text-secondary mb-1">50+</div>
+                <div className="text-xs sm:text-sm text-gray-400 whitespace-nowrap">Projetos Executados</div>
               </div>
             </div>
           </div>
