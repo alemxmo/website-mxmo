@@ -79,7 +79,7 @@ export default function AdminCompanyEditor() {
     try {
       const jsonString = JSON.stringify(data, null, 2);
       
-      // Sobrescrever o arquivo JSON diretamente na pasta company-data
+      // Tentar sobrescrever o arquivo JSON diretamente na pasta company-data
       const response = await fetch(`/company-data/${companyName}.json`, {
         method: 'PUT',
         headers: {
@@ -96,6 +96,67 @@ export default function AdminCompanyEditor() {
     } catch (error) {
       console.error('Erro ao salvar JSON:', error);
       throw error;
+    }
+  };
+
+  const downloadCompanyJSON = async (companyName: string, data: CompanyData) => {
+    try {
+      // Criar um link para download do arquivo JSON atualizado
+      const jsonString = JSON.stringify(data, null, 2);
+      const blob = new Blob([jsonString], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      
+      // Criar elemento de download invisível
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `${companyName}.json`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+      
+      return true;
+    } catch (error) {
+      console.error('Erro ao gerar JSON:', error);
+      throw error;
+    }
+  };
+
+  const handleDownload = async () => {
+    if (!companyData) {
+      toast({
+        variant: "destructive",
+        title: "Erro",
+        description: "Nenhum dado para baixar."
+      });
+      return;
+    }
+    
+    setSaving(true);
+    try {
+      const companyName = selectedCompany || companyData.empresa;
+      
+      if (!companyName) {
+        throw new Error('Nome da empresa não definido');
+      }
+
+      // Baixar o JSON
+      await downloadCompanyJSON(companyName, companyData);
+      
+      toast({
+        title: "Sucesso!",
+        description: `Arquivo ${companyName}.json foi baixado com sucesso.`,
+        duration: 5000
+      });
+    } catch (error) {
+      console.error('Erro ao baixar:', error);
+      toast({
+        variant: "destructive",
+        title: "Erro",
+        description: "Não foi possível baixar o arquivo."
+      });
+    } finally {
+      setSaving(false);
     }
   };
 
@@ -257,9 +318,19 @@ export default function AdminCompanyEditor() {
                   {saving ? 'Salvando...' : selectedCompany ? 'Salvar Alterações' : 'Criar Nova Empresa'}
                 </Button>
                 
+                {selectedCompany && (
+                  <Button 
+                    onClick={handleDownload} 
+                    disabled={saving}
+                    variant="outline"
+                  >
+                    Baixar JSON
+                  </Button>
+                )}
+                
                 <div className="text-sm text-muted-foreground flex items-center ml-4">
                   {selectedCompany ? 
-                    'As alterações serão salvas automaticamente no arquivo JSON' :
+                    'Salvar: atualiza automaticamente | Baixar: faz download do JSON' :
                     'Uma nova empresa será criada com arquivos para download'
                   }
                 </div>
