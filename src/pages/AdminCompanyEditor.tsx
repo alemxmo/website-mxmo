@@ -280,8 +280,8 @@ export default function AdminCompanyEditor() {
     try {
       setSaving(true);
       
-      // Criar o JSON da nova empresa
-      await saveCompanyJSON(companyName, companyData);
+      // Baixar o JSON da nova empresa (não tentar fazer PUT para arquivo inexistente)
+      await downloadCompanyJSON(companyName, companyData);
       
       // Gerar o texto para adicionar ao emp_lgn.txt
       const loginEntry = `${companyName}:SENHA:/company-data/${companyName}.json`;
