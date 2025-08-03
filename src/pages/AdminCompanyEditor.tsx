@@ -77,25 +77,24 @@ export default function AdminCompanyEditor() {
 
   const saveCompanyJSON = async (companyName: string, data: CompanyData) => {
     try {
-      // Criar um link para download do arquivo JSON atualizado
       const jsonString = JSON.stringify(data, null, 2);
-      const blob = new Blob([jsonString], { type: 'application/json' });
-      const url = URL.createObjectURL(blob);
       
-      // Criar elemento de download invisível
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = `${companyName}.json`;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      URL.revokeObjectURL(url);
+      // Sobrescrever o arquivo JSON diretamente na pasta company-data
+      const response = await fetch(`/company-data/${companyName}.json`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: jsonString,
+      });
       
-      console.log('JSON gerado para download:', companyName, data);
+      if (!response.ok) {
+        throw new Error(`Erro ao salvar arquivo: ${response.statusText}`);
+      }
       
       return true;
     } catch (error) {
-      console.error('Erro ao gerar JSON:', error);
+      console.error('Erro ao salvar JSON:', error);
       throw error;
     }
   };
@@ -123,8 +122,8 @@ export default function AdminCompanyEditor() {
       
       toast({
         title: "Sucesso!",
-        description: `Arquivo ${companyName}.json foi baixado. Substitua o arquivo na pasta company-data.`,
-        duration: 10000
+        description: `Dados da empresa ${companyName} foram atualizados automaticamente.`,
+        duration: 5000
       });
     } catch (error) {
       console.error('Erro ao salvar:', error);
@@ -255,12 +254,12 @@ export default function AdminCompanyEditor() {
                   disabled={saving}
                   className="min-w-[150px]"
                 >
-                  {saving ? 'Salvando...' : selectedCompany ? 'Baixar JSON Atualizado' : 'Criar Nova Empresa'}
+                  {saving ? 'Salvando...' : selectedCompany ? 'Salvar Alterações' : 'Criar Nova Empresa'}
                 </Button>
                 
                 <div className="text-sm text-muted-foreground flex items-center ml-4">
                   {selectedCompany ? 
-                    'O arquivo JSON será baixado para substituir na pasta company-data' :
+                    'As alterações serão salvas automaticamente no arquivo JSON' :
                     'Uma nova empresa será criada com arquivos para download'
                   }
                 </div>
