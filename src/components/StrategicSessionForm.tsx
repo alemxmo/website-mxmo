@@ -53,6 +53,15 @@ const StrategicSessionForm = ({
     },
   });
 
+  // Função para rastrear conversão do Google
+  const gtag_report_conversion = () => {
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', 'conversion', {
+        'send_to': 'AW-17417716131/jNhKCOPprf4aEKODtfFA'
+      });
+    }
+  };
+
   const onSubmit = async (data: FormData) => {
     try {
       const revenueLabels: { [key: string]: string } = {
@@ -110,6 +119,9 @@ Enviado em: ${new Date().toLocaleString('pt-BR')}
         },
         'bDrIc2tRtXZjSbaMi'
       );
+
+      // Rastrear conversão após envio bem-sucedido
+      gtag_report_conversion();
       
       toast({
         title: "Sucesso!",
