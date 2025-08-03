@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { CheckCircle, Rocket, Target, Users, ArrowRight, Clock, Phone, Mail } from "lucide-react";
+import { CheckCircle, Rocket, Target, Users, ArrowRight, Clock, Mail, MessageCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export default function Success() {
@@ -123,10 +123,15 @@ export default function Success() {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <div className="flex items-center gap-2 text-sm">
-                  <Phone className="w-4 h-4 text-primary" />
-                  <span>+55 (11) 9999-9999</span>
-                </div>
+                <a 
+                  href="https://wa.me/5511941168878" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-sm hover:text-primary transition-colors"
+                >
+                  <MessageCircle className="w-4 h-4 text-green-500" />
+                  <span>(11) 94116-8878</span>
+                </a>
                 <div className="flex items-center gap-2 text-sm">
                   <Mail className="w-4 h-4 text-primary" />
                   <span>contato@mxmo.com.br</span>
@@ -146,28 +151,9 @@ export default function Success() {
         </div>
       </div>
 
-      {/* Trust Indicators */}
+      {/* Privacy Notice */}
       <div className="container mx-auto px-4 py-16 border-t">
-        <div className="max-w-4xl mx-auto text-center space-y-8">
-          <h4 className="text-lg font-semibold text-muted-foreground">
-            Empresas que já transformaram seus negócios conosco
-          </h4>
-          
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center opacity-60">
-            <div className="h-12 bg-muted/50 rounded flex items-center justify-center">
-              <span className="font-semibold text-sm">EMPRESA A</span>
-            </div>
-            <div className="h-12 bg-muted/50 rounded flex items-center justify-center">
-              <span className="font-semibold text-sm">EMPRESA B</span>
-            </div>
-            <div className="h-12 bg-muted/50 rounded flex items-center justify-center">
-              <span className="font-semibold text-sm">EMPRESA C</span>
-            </div>
-            <div className="h-12 bg-muted/50 rounded flex items-center justify-center">
-              <span className="font-semibold text-sm">EMPRESA D</span>
-            </div>
-          </div>
-
+        <div className="max-w-4xl mx-auto text-center">
           <p className="text-sm text-muted-foreground">
             Seus dados estão seguros conosco. Respeitamos sua privacidade e seguimos a LGPD.
           </p>

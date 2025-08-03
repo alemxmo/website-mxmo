@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import emailjs from '@emailjs/browser';
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -38,6 +39,9 @@ const StrategicSessionForm = ({
   triggerClassName = "button-primary", 
   triggerText = "Agendar Sessão Estratégica" 
 }: StrategicSessionFormProps) => {
+  const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
+  
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -123,11 +127,15 @@ Enviado em: ${new Date().toLocaleString('pt-BR')}
       // Rastrear conversão após envio bem-sucedido
       gtag_report_conversion();
       
-      toast({
-        title: "Sucesso!",
-        description: "Formulário enviado com sucesso! Entraremos em contato em breve.",
-      });
+      // Fechar o modal e redirecionar para página de sucesso
+      setOpen(false);
       form.reset();
+      
+      // Aguardar um pouco para garantir que o tracking foi executado
+      setTimeout(() => {
+        navigate('/success');
+      }, 500);
+      
     } catch (error) {
       console.error('Error sending form:', error);
       toast({
@@ -157,7 +165,7 @@ Enviado em: ${new Date().toLocaleString('pt-BR')}
   ];
 
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         {trigger || (
           <Button className={triggerClassName}>
