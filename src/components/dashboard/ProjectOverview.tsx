@@ -88,20 +88,14 @@ const ProjectOverview = ({ empresa, data }: ProjectOverviewProps) => {
         <div className="space-y-4">
           <h3 className="font-semibold text-slate-800">Timeline do Projeto</h3>
           
-          {/* Barra de progresso geral */}
-          <div className="space-y-2">
-            <Progress value={projectData.progress} className="h-3" />
-            <p className="text-center text-sm font-medium text-slate-600">{projectData.progress}% concluído</p>
-          </div>
-          
           {/* Fases do projeto */}
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between relative overflow-x-auto pb-2 gap-4 sm:gap-0">
+          <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-between relative pb-2 gap-6 sm:gap-4">
             {phases.map((phase, index) => {
               const status = getPhaseStatus(phase);
               const IconComponent = phase.icon;
               
               return (
-                <div key={index} className="flex flex-col items-center z-10 min-w-0 flex-1">
+                <div key={index} className="flex flex-col items-center z-10 w-full sm:w-auto max-w-[120px]">
                   <div 
                     className={`
                       w-12 h-12 rounded-full flex items-center justify-center border-2 bg-white shadow-sm
@@ -114,7 +108,7 @@ const ProjectOverview = ({ empresa, data }: ProjectOverviewProps) => {
                   </div>
                   <span 
                     className={`
-                      text-xs mt-2 font-medium text-center max-w-[100px] break-words leading-tight
+                      text-xs mt-2 font-medium text-center leading-tight px-1
                       ${status === 'completed' ? 'text-green-600' : 
                         status === 'current' ? 'text-blue-600' : 
                         'text-gray-400'}
@@ -122,7 +116,7 @@ const ProjectOverview = ({ empresa, data }: ProjectOverviewProps) => {
                   >
                     {phase.name}
                   </span>
-                  <span className="text-xs text-slate-500 mt-1">
+                  <span className="text-xs text-slate-500 mt-1 font-semibold">
                     {phase.progress}%
                   </span>
                 </div>
@@ -131,6 +125,12 @@ const ProjectOverview = ({ empresa, data }: ProjectOverviewProps) => {
             
             {/* Linha conectora - apenas no desktop */}
             <div className="hidden sm:block absolute top-6 left-6 right-6 h-0.5 bg-gray-200 -z-10"></div>
+          </div>
+          
+          {/* Barra de progresso geral na parte inferior */}
+          <div className="space-y-2 mt-6">
+            <Progress value={projectData.progress} className="h-3" />
+            <p className="text-center text-sm font-medium text-slate-600">{projectData.progress}% concluído</p>
           </div>
         </div>
       </CardContent>
