@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -11,6 +12,8 @@ import { CompanyPhases } from '@/components/admin/CompanyPhases';
 import { CompanyInsights } from '@/components/admin/CompanyInsights';
 import { CompanyNextSteps } from '@/components/admin/CompanyNextSteps';
 import { CompanyDocuments } from '@/components/admin/CompanyDocuments';
+import AdminHeader from '@/components/admin/AdminHeader';
+import AdminFooter from '@/components/admin/AdminFooter';
 import type { CompanyData } from '@/hooks/useCompanyData';
 
 export default function AdminCompanyEditor() {
@@ -20,6 +23,11 @@ export default function AdminCompanyEditor() {
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
   const { toast } = useToast();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    navigate("/");
+  };
 
   useEffect(() => {
     loadCompanies();
@@ -260,12 +268,14 @@ export default function AdminCompanyEditor() {
   };
 
   return (
-    <div className="min-h-screen bg-background p-6">
-      <div className="max-w-7xl mx-auto space-y-6">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
+      <AdminHeader onLogout={handleLogout} />
+      
+      <main className="container mx-auto px-4 py-6 space-y-6 sm:px-6 lg:px-8">
         <Card>
           <CardHeader>
             <CardTitle className="text-3xl text-center">
-              MXMO - Editor Administrativo de Empresas
+              Editor Administrativo de Empresas
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
@@ -393,7 +403,9 @@ export default function AdminCompanyEditor() {
             </CardContent>
           </Card>
         )}
-      </div>
+      </main>
+
+      <AdminFooter />
     </div>
   );
 }
