@@ -2,6 +2,7 @@
 import React from "react";
 import { Mail, MessageCircle, MapPin, Linkedin, Instagram, ArrowUp } from "lucide-react";
 import PrivacyPolicyDialog from "./PrivacyPolicyDialog";
+import AdminLoginModal from "./AdminLoginModal";
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -104,6 +105,13 @@ const Footer = () => {
                     Política de Privacidade
                   </button>
                 </PrivacyPolicyDialog>
+              </li>
+              <li>
+                <AdminLoginModal>
+                  <button className="text-white/80 hover:text-white transition-colors text-left">
+                    Projetos MXMO
+                  </button>
+                </AdminLoginModal>
               </li>
             </ul>
           </div>

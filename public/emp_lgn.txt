@@ -2,3 +2,4 @@ ATHON:2345:/company-data/ATHON.json
 LLT:1234:/company-data/LLT.json
 MXMO:5678:/company-data/MXMO.json
 TECH:9999:/company-data/TECH.json
+MXMO:1721:admin
