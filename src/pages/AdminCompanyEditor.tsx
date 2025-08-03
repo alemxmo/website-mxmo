@@ -199,6 +199,37 @@ export default function AdminCompanyEditor() {
   };
 
   const handleCreateNew = () => {
+    const defaultKPIs = [
+      {
+        title: "Faturamento Impactado",
+        value: "R$ 0",
+        target: "R$ 0",
+        progress: 0,
+        description: "Meta vs. Realizado"
+      },
+      {
+        title: "Oportunidades",
+        value: "0",
+        target: "0",
+        progress: 0,
+        description: "Identificadas e Capturadas"
+      },
+      {
+        title: "Entregas Validadas",
+        value: "0",
+        target: "0",
+        progress: 0,
+        description: "Marcos Concluídos"
+      },
+      {
+        title: "ROI Projetado",
+        value: "0%",
+        target: "0%",
+        progress: 0,
+        description: "Retorno sobre Investimento"
+      }
+    ];
+
     const newCompanyData: CompanyData = {
       empresa: 'NOVA_EMPRESA',
       projectOverview: {
@@ -207,8 +238,15 @@ export default function AdminCompanyEditor() {
         nextMilestone: 'Início do Projeto',
         daysRemaining: 30
       },
-      kpis: [],
-      timeline: [],
+      kpis: defaultKPIs,
+      timeline: [
+        { month: "Jan", fase1: 0, fase2: 0, fase3: 0 },
+        { month: "Fev", fase1: 0, fase2: 0, fase3: 0 },
+        { month: "Mar", fase1: 0, fase2: 0, fase3: 0 },
+        { month: "Abr", fase1: 0, fase2: 0, fase3: 0 },
+        { month: "Mai", fase1: 0, fase2: 0, fase3: 0 },
+        { month: "Jun", fase1: 0, fase2: 0, fase3: 0 }
+      ],
       phaseProgress: [
         { phase: 'Análise & Diagnóstico', phaseName: 'Diagnóstico', completed: 0, remaining: 100 },
         { phase: 'Implementação', phaseName: 'Plano de Expansão', completed: 0, remaining: 100 },
@@ -216,7 +254,11 @@ export default function AdminCompanyEditor() {
       ],
       insights: [],
       nextSteps: [],
-      documents: []
+      documents: [
+        { name: "Diagnóstico Preliminar", available: false },
+        { name: "Análise de Processos", available: false },
+        { name: "Plano de Implementação", available: false }
+      ]
     };
     setCompanyData(newCompanyData);
     setSelectedCompany('');
