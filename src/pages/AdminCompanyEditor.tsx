@@ -33,6 +33,7 @@ export default function AdminCompanyEditor() {
       const companyNames = lines.map(line => line.split(':')[0]);
       setCompanies(companyNames);
     } catch (error) {
+      console.error('Erro ao carregar empresas:', error);
       toast({
         variant: "destructive",
         title: "Erro",
@@ -58,6 +59,7 @@ export default function AdminCompanyEditor() {
       const data = await dataResponse.json();
       setCompanyData(data);
     } catch (error) {
+      console.error('Erro ao carregar dados da empresa:', error);
       toast({
         variant: "destructive",
         title: "Erro",
@@ -73,22 +75,59 @@ export default function AdminCompanyEditor() {
     loadCompanyData(companyName);
   };
 
+  const saveCompanyJSON = async (companyName: string, data: CompanyData) => {
+    try {
+      // Criar um link para download do arquivo JSON atualizado
+      const jsonString = JSON.stringify(data, null, 2);
+      const blob = new Blob([jsonString], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      
+      // Criar elemento de download invisível
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `${companyName}.json`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+      
+      console.log('JSON gerado para download:', companyName, data);
+      
+      return true;
+    } catch (error) {
+      console.error('Erro ao gerar JSON:', error);
+      throw error;
+    }
+  };
+
   const handleSave = async () => {
-    if (!companyData || !selectedCompany) return;
+    if (!companyData) {
+      toast({
+        variant: "destructive",
+        title: "Erro",
+        description: "Nenhum dado para salvar."
+      });
+      return;
+    }
     
     setSaving(true);
     try {
-      // Simular salvamento - na implementação real seria uma API
-      console.log('Salvando dados da empresa:', selectedCompany, companyData);
+      const companyName = selectedCompany || companyData.empresa;
       
-      // Simular delay de salvamento
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      if (!companyName) {
+        throw new Error('Nome da empresa não definido');
+      }
+
+      // Salvar o JSON
+      await saveCompanyJSON(companyName, companyData);
       
       toast({
         title: "Sucesso!",
-        description: "Dados da empresa atualizados com sucesso."
+        description: `Arquivo ${companyName}.json foi baixado. Substitua o arquivo na pasta company-data.`,
+        duration: 10000
       });
     } catch (error) {
+      console.error('Erro ao salvar:', error);
       toast({
         variant: "destructive",
         title: "Erro",
@@ -123,6 +162,61 @@ export default function AdminCompanyEditor() {
     setSelectedCompany('');
   };
 
+  const handleAddNewCompany = async () => {
+    if (!companyData) return;
+    
+    const companyName = companyData.empresa;
+    if (!companyName || companyName === 'NOVA_EMPRESA') {
+      toast({
+        variant: "destructive",
+        title: "Erro",
+        description: "Por favor, defina um nome válido para a empresa antes de salvar."
+      });
+      return;
+    }
+
+    try {
+      setSaving(true);
+      
+      // Criar o JSON da nova empresa
+      await saveCompanyJSON(companyName, companyData);
+      
+      // Gerar o texto para adicionar ao emp_lgn.txt
+      const loginEntry = `${companyName}:SENHA:/company-data/${companyName}.json`;
+      
+      // Criar um arquivo de texto com a entrada para emp_lgn.txt
+      const loginBlob = new Blob([loginEntry], { type: 'text/plain' });
+      const loginUrl = URL.createObjectURL(loginBlob);
+      const loginLink = document.createElement('a');
+      loginLink.href = loginUrl;
+      loginLink.download = `emp_lgn_entry_${companyName}.txt`;
+      document.body.appendChild(loginLink);
+      loginLink.click();
+      document.body.removeChild(loginLink);
+      URL.revokeObjectURL(loginUrl);
+      
+      toast({
+        title: "Nova empresa criada!",
+        description: `Arquivos baixados: ${companyName}.json e linha para emp_lgn.txt. Adicione os arquivos ao servidor.`,
+        duration: 15000
+      });
+      
+      // Atualizar a lista de empresas
+      setCompanies(prev => [...prev, companyName]);
+      setSelectedCompany(companyName);
+      
+    } catch (error) {
+      console.error('Erro ao criar nova empresa:', error);
+      toast({
+        variant: "destructive",
+        title: "Erro",
+        description: "Não foi possível criar a nova empresa."
+      });
+    } finally {
+      setSaving(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background p-6">
       <div className="max-w-7xl mx-auto space-y-6">
@@ -153,22 +247,34 @@ export default function AdminCompanyEditor() {
                 Criar Nova Empresa
               </Button>
             </div>
+            
+            {companyData && (
+              <div className="flex gap-2 pt-4 border-t">
+                <Button 
+                  onClick={selectedCompany ? handleSave : handleAddNewCompany} 
+                  disabled={saving}
+                  className="min-w-[150px]"
+                >
+                  {saving ? 'Salvando...' : selectedCompany ? 'Baixar JSON Atualizado' : 'Criar Nova Empresa'}
+                </Button>
+                
+                <div className="text-sm text-muted-foreground flex items-center ml-4">
+                  {selectedCompany ? 
+                    'O arquivo JSON será baixado para substituir na pasta company-data' :
+                    'Uma nova empresa será criada com arquivos para download'
+                  }
+                </div>
+              </div>
+            )}
           </CardContent>
         </Card>
 
         {(companyData && !loading) && (
           <Card>
-            <CardHeader className="flex flex-row items-center justify-between">
+            <CardHeader>
               <CardTitle>
-                Editando: {companyData.empresa}
+                {selectedCompany ? `Editando: ${companyData.empresa}` : 'Criando Nova Empresa'}
               </CardTitle>
-              <Button 
-                onClick={handleSave} 
-                disabled={saving}
-                className="min-w-[120px]"
-              >
-                {saving ? 'Salvando...' : 'Salvar Alterações'}
-              </Button>
             </CardHeader>
             <CardContent>
               <Tabs defaultValue="basic" className="w-full">

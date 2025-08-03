@@ -68,7 +68,10 @@ export function CompanyBasicInfo({ data, onChange }: CompanyBasicInfoProps) {
               min="0"
               max="100"
               value={data.projectOverview.progress}
-              onChange={(e) => updateProjectOverview('progress', parseInt(e.target.value) || 0)}
+              onChange={(e) => {
+                const value = e.target.value;
+                updateProjectOverview('progress', value === '' ? 0 : parseInt(value));
+              }}
               placeholder="0-100"
             />
           </div>
@@ -90,7 +93,10 @@ export function CompanyBasicInfo({ data, onChange }: CompanyBasicInfoProps) {
               type="number"
               min="0"
               value={data.projectOverview.daysRemaining}
-              onChange={(e) => updateProjectOverview('daysRemaining', parseInt(e.target.value) || 0)}
+              onChange={(e) => {
+                const value = e.target.value;
+                updateProjectOverview('daysRemaining', value === '' ? 0 : parseInt(value));
+              }}
               placeholder="Número de dias"
             />
           </div>

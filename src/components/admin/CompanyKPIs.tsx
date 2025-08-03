@@ -110,7 +110,10 @@ export function CompanyKPIs({ data, onChange }: CompanyKPIsProps) {
                   min="0"
                   max="100"
                   value={kpi.progress}
-                  onChange={(e) => updateKPI(index, 'progress', parseInt(e.target.value) || 0)}
+                  onChange={(e) => {
+                    const value = e.target.value;
+                    updateKPI(index, 'progress', value === '' ? 0 : parseInt(value));
+                  }}
                   placeholder="0-100"
                 />
               </div>

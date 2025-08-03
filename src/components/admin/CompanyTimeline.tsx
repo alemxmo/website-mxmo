@@ -89,7 +89,10 @@ export function CompanyTimeline({ data, onChange }: CompanyTimelineProps) {
                   min="0"
                   max="100"
                   value={entry.fase1}
-                  onChange={(e) => updateTimelineEntry(index, 'fase1', parseInt(e.target.value) || 0)}
+                  onChange={(e) => {
+                    const value = e.target.value;
+                    updateTimelineEntry(index, 'fase1', value === '' ? 0 : parseInt(value));
+                  }}
                   placeholder="0-100"
                 />
               </div>
@@ -102,7 +105,10 @@ export function CompanyTimeline({ data, onChange }: CompanyTimelineProps) {
                   min="0"
                   max="100"
                   value={entry.fase2}
-                  onChange={(e) => updateTimelineEntry(index, 'fase2', parseInt(e.target.value) || 0)}
+                  onChange={(e) => {
+                    const value = e.target.value;
+                    updateTimelineEntry(index, 'fase2', value === '' ? 0 : parseInt(value));
+                  }}
                   placeholder="0-100"
                 />
               </div>
@@ -115,7 +121,10 @@ export function CompanyTimeline({ data, onChange }: CompanyTimelineProps) {
                   min="0"
                   max="100"
                   value={entry.fase3}
-                  onChange={(e) => updateTimelineEntry(index, 'fase3', parseInt(e.target.value) || 0)}
+                  onChange={(e) => {
+                    const value = e.target.value;
+                    updateTimelineEntry(index, 'fase3', value === '' ? 0 : parseInt(value));
+                  }}
                   placeholder="0-100"
                 />
               </div>

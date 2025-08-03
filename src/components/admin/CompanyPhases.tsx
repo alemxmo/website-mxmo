@@ -61,7 +61,10 @@ export function CompanyPhases({ data, onChange }: CompanyPhasesProps) {
                   min="0"
                   max="100"
                   value={phase.completed}
-                  onChange={(e) => updatePhase(index, 'completed', parseInt(e.target.value) || 0)}
+                  onChange={(e) => {
+                    const value = e.target.value;
+                    updatePhase(index, 'completed', value === '' ? 0 : parseInt(value));
+                  }}
                   placeholder="0-100"
                 />
               </div>
@@ -74,7 +77,10 @@ export function CompanyPhases({ data, onChange }: CompanyPhasesProps) {
                   min="0"
                   max="100"
                   value={phase.remaining}
-                  onChange={(e) => updatePhase(index, 'remaining', parseInt(e.target.value) || 0)}
+                  onChange={(e) => {
+                    const value = e.target.value;
+                    updatePhase(index, 'remaining', value === '' ? 0 : parseInt(value));
+                  }}
                   placeholder="0-100"
                 />
               </div>
