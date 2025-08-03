@@ -76,7 +76,7 @@ const ClientLoginModal = ({
           </button>
         )}
       </DialogTrigger>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="mx-4 w-[calc(100vw-2rem)] max-w-md sm:mx-auto sm:w-full">
         <DialogHeader>
           <DialogTitle className="text-center text-xl font-bold">
             Área do Cliente MXMO

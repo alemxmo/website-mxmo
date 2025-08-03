@@ -53,14 +53,14 @@ const Dashboard = () => {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
       <DashboardHeader empresa={empresa} onLogout={handleLogout} />
       
-      <main className="container mx-auto p-6 space-y-8">
+      <main className="container mx-auto px-4 py-6 space-y-6 sm:px-6 lg:px-8 lg:space-y-8">
         {/* Visão Geral do Projeto */}
         <div className="grid gap-6">
           <ProjectOverview empresa={empresa} data={data} />
         </div>
 
         {/* KPIs Estratégicos */}
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 sm:gap-6">
           <KPICards data={data} />
         </div>
 

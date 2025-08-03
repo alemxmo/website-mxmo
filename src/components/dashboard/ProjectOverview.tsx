@@ -53,7 +53,7 @@ const ProjectOverview = ({ empresa, data }: ProjectOverviewProps) => {
       
       <CardContent className="space-y-6">
         {/* Status Atual */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
           <div className="space-y-2">
             <h3 className="font-semibold text-slate-800 flex items-center gap-2">
               <Clock className="h-5 w-5 text-blue-600" />
@@ -64,7 +64,7 @@ const ProjectOverview = ({ empresa, data }: ProjectOverviewProps) => {
             <p className="text-sm text-slate-500">{projectData.progress}% concluído</p>
           </div>
           
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="bg-white rounded-lg p-4 border">
               <div className="flex items-center gap-2 mb-2">
                 <Target className="h-4 w-4 text-green-600" />
@@ -86,7 +86,7 @@ const ProjectOverview = ({ empresa, data }: ProjectOverviewProps) => {
         {/* Timeline das Fases */}
         <div className="space-y-3">
           <h3 className="font-semibold text-slate-800">Timeline do Projeto</h3>
-          <div className="flex items-center justify-between relative">
+          <div className="flex items-center justify-between relative overflow-x-auto pb-2">
             {phases.map((phase, index) => {
               const status = getPhaseStatus(phase);
               const IconComponent = phase.icon;
@@ -105,7 +105,7 @@ const ProjectOverview = ({ empresa, data }: ProjectOverviewProps) => {
                   </div>
                   <span 
                     className={`
-                      text-xs mt-2 font-medium text-center
+                      text-xs mt-2 font-medium text-center whitespace-nowrap max-w-[80px] break-words
                       ${status === 'completed' ? 'text-green-600' : 
                         status === 'current' ? 'text-blue-600' : 
                         'text-gray-400'}

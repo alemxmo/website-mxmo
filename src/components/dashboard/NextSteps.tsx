@@ -42,7 +42,7 @@ const NextSteps = ({ data }: NextStepsProps) => {
   }
 
   return (
-    <div className="col-span-full grid lg:grid-cols-2 gap-6">
+    <div className="col-span-full grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
       <Card className="shadow-lg">
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-slate-800">
@@ -54,7 +54,7 @@ const NextSteps = ({ data }: NextStepsProps) => {
           {data.nextSteps.map((step, index) => {
             const IconComponent = getStepIcon(index);
             return (
-              <div key={index} className="bg-slate-50 rounded-lg p-4 border-l-4 border-l-blue-500">
+              <div key={index} className="bg-slate-50 rounded-lg p-3 sm:p-4 border-l-4 border-l-blue-500">
                 <div className="flex items-start gap-3">
                   <IconComponent className="h-5 w-5 text-blue-600 mt-1" />
                   <div className="flex-1">
@@ -78,30 +78,32 @@ const NextSteps = ({ data }: NextStepsProps) => {
         </CardHeader>
         <CardContent className="space-y-3">
           {data.documents.map((doc, index) => (
-            <div key={index} className="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
-              <div className="flex items-center gap-3">
-                <FileText className="h-4 w-4 text-slate-600" />
+            <div key={index} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0 p-3 bg-slate-50 rounded-lg">
+              <div className="flex items-center gap-3 flex-1">
+                <FileText className="h-4 w-4 text-slate-600 flex-shrink-0" />
                 <span className="text-sm font-medium text-slate-700">{doc.name}</span>
               </div>
-              {doc.available ? (
-                <Button 
-                  size="sm" 
-                  variant="default"
-                  className="text-xs"
-                  onClick={() => window.open(doc.link, '_blank')}
-                >
-                  Acessar
-                </Button>
-              ) : (
-                <Button 
-                  size="sm" 
-                  variant="outline"
-                  disabled
-                  className="text-xs"
-                >
-                  Em breve
-                </Button>
-              )}
+              <div className="flex justify-end sm:justify-start">
+                {doc.available ? (
+                  <Button 
+                    size="sm" 
+                    variant="default"
+                    className="text-xs w-full sm:w-auto"
+                    onClick={() => window.open(doc.link, '_blank')}
+                  >
+                    Acessar
+                  </Button>
+                ) : (
+                  <Button 
+                    size="sm" 
+                    variant="outline"
+                    disabled
+                    className="text-xs w-full sm:w-auto"
+                  >
+                    Em breve
+                  </Button>
+                )}
+              </div>
             </div>
           ))}
         </CardContent>

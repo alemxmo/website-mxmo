@@ -36,7 +36,7 @@ const ProgressChart = ({ data }: ProgressChartProps) => {
   const phaseProgress = data.phaseProgress;
 
   return (
-    <div className="col-span-full grid lg:grid-cols-2 gap-6">
+    <div className="col-span-full grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
       <Card className="shadow-lg">
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-slate-800">
@@ -45,11 +45,11 @@ const ProgressChart = ({ data }: ProgressChartProps) => {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <ResponsiveContainer width="100%" height={300}>
+          <ResponsiveContainer width="100%" height={250}>
             <LineChart data={timelineData}>
               <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="month" />
-              <YAxis />
+              <XAxis dataKey="month" tick={{ fontSize: 12 }} />
+              <YAxis tick={{ fontSize: 12 }} />
               <Tooltip />
               <Line 
                 type="monotone" 

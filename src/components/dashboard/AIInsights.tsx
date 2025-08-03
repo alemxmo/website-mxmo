@@ -72,8 +72,8 @@ const AIInsights = ({ data }: AIInsightsProps) => {
           const colors = getInsightColors(insight.type);
           
           return (
-            <div key={index} className={`${colors.bgColor} rounded-xl p-6 border-l-4 border-l-current ${colors.color}`}>
-              <div className="flex items-start gap-4">
+            <div key={index} className={`${colors.bgColor} rounded-xl p-4 sm:p-6 border-l-4 border-l-current ${colors.color}`}>
+              <div className="flex items-start gap-3 sm:gap-4">
                 <IconComponent className={`h-5 w-5 ${colors.color} mt-1 flex-shrink-0`} />
                 <div className="flex-1">
                   <h4 className={`font-semibold ${colors.color} mb-2`}>{insight.title}</h4>
