@@ -12,9 +12,9 @@ const AdminHeader = ({ onLogout }: AdminHeaderProps) => {
       <div className="container mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-0">
         <div className="flex items-center space-x-4 sm:space-x-6">
           <img 
-            src="/lovable-uploads/e0d7654f-584f-4726-95e1-e2f81e68a227.png" 
+            src="/lovable-uploads/c4f1c955-faa6-413d-bdd2-33d221cd6bd5.png" 
             alt="MXMO Logo"
-            className="h-8 sm:h-10 w-auto"
+            className="h-10 sm:h-12 w-auto"
           />
           <div>
             <h1 className="text-lg sm:text-2xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-300 bg-clip-text text-transparent">

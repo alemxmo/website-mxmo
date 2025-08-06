@@ -22,9 +22,9 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16 lg:h-20">
           <div className="flex-shrink-0">
             <img 
-              src="/lovable-uploads/e0d7654f-584f-4726-95e1-e2f81e68a227.png" 
+              src="/lovable-uploads/c4f1c955-faa6-413d-bdd2-33d221cd6bd5.png" 
               alt="MXMO Logo"
-              className="h-8 w-auto"
+              className="h-12 w-auto"
             />
           </div>
 

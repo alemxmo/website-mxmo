@@ -11,9 +11,9 @@ const AdminFooter = () => {
           <div>
             <div className="mb-6">
               <img 
-                src="/lovable-uploads/e0d7654f-584f-4726-95e1-e2f81e68a227.png" 
+                src="/lovable-uploads/c4f1c955-faa6-413d-bdd2-33d221cd6bd5.png" 
                 alt="MXMO Logo"
-                className="h-8 w-auto mb-4"
+                className="h-10 w-auto mb-4"
               />
               <p className="text-white/80 leading-relaxed">
                 <strong>DNA MXMO:</strong> Inteligência Estratégica, Execução Implacável.
