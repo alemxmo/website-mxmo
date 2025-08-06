@@ -10,7 +10,7 @@ export const initializeAdminSystem = async () => {
     const { data: existingAdmin } = await supabase
       .from('admin_users')
       .select('*')
-      .eq('email', 'MXMOADM@admin.local')
+      .eq('email', 'admin@mxmo.com')
       .single();
 
     if (existingAdmin) {
@@ -18,7 +18,7 @@ export const initializeAdminSystem = async () => {
       
       // Verificar se existe no Auth
       const { data: { user }, error: signInError } = await supabase.auth.signInWithPassword({
-        email: 'MXMOADM@admin.local',
+        email: 'admin@mxmo.com',
         password: 'admin1721'
       });
 
@@ -33,7 +33,7 @@ export const initializeAdminSystem = async () => {
     console.log('🔐 Criando usuário admin no Supabase Auth...');
     
     const { data: authData, error: authError } = await supabase.auth.signUp({
-      email: 'MXMOADM@admin.local',
+      email: 'admin@mxmo.com',
       password: 'admin1721',
       options: {
         emailRedirectTo: `${window.location.origin}/`,
@@ -53,7 +53,7 @@ export const initializeAdminSystem = async () => {
     if (!userId) {
       console.log('🔍 Usuário já existe, fazendo login para obter ID...');
       const { data: { user }, error: signInError } = await supabase.auth.signInWithPassword({
-        email: 'MXMOADM@admin.local',
+        email: 'admin@mxmo.com',
         password: 'admin1721'
       });
 
@@ -77,7 +77,7 @@ export const initializeAdminSystem = async () => {
       .upsert({
         id: userId,
         name: 'MXMO Administrator',
-        email: 'MXMOADM@admin.local',
+        email: 'admin@mxmo.com',
         updated_at: new Date().toISOString()
       }, {
         onConflict: 'email'
@@ -91,7 +91,7 @@ export const initializeAdminSystem = async () => {
     console.log('🧪 Testando login administrativo...');
     
     const { data: { user: testUser }, error: testError } = await supabase.auth.signInWithPassword({
-      email: 'MXMOADM@admin.local',
+      email: 'admin@mxmo.com',
       password: 'admin1721'
     });
 
