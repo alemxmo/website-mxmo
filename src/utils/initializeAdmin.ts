@@ -19,7 +19,7 @@ export const initializeAdminSystem = async () => {
       // Verificar se existe no Auth
       const { data: { user }, error: signInError } = await supabase.auth.signInWithPassword({
         email: 'MXMOADM@admin.local',
-        password: '1721'
+        password: 'admin1721'
       });
 
       if (!signInError && user) {
@@ -34,7 +34,7 @@ export const initializeAdminSystem = async () => {
     
     const { data: authData, error: authError } = await supabase.auth.signUp({
       email: 'MXMOADM@admin.local',
-      password: '1721',
+      password: 'admin1721',
       options: {
         emailRedirectTo: `${window.location.origin}/`,
         data: {
@@ -54,7 +54,7 @@ export const initializeAdminSystem = async () => {
       console.log('🔍 Usuário já existe, fazendo login para obter ID...');
       const { data: { user }, error: signInError } = await supabase.auth.signInWithPassword({
         email: 'MXMOADM@admin.local',
-        password: '1721'
+        password: 'admin1721'
       });
 
       if (signInError) {
@@ -92,7 +92,7 @@ export const initializeAdminSystem = async () => {
     
     const { data: { user: testUser }, error: testError } = await supabase.auth.signInWithPassword({
       email: 'MXMOADM@admin.local',
-      password: '1721'
+      password: 'admin1721'
     });
 
     if (testError) {
@@ -115,14 +115,14 @@ export const initializeAdminSystem = async () => {
     console.log('✅ Sistema administrativo configurado com sucesso!');
     console.log('📋 Credenciais:');
     console.log('   Empresa: MXMOADM');
-    console.log('   Senha: 1721');
+    console.log('   Senha: admin1721');
 
     return { 
       success: true, 
       message: 'Sistema administrativo configurado com sucesso!',
       credentials: {
         empresa: 'MXMOADM',
-        senha: '1721'
+        senha: 'admin1721'
       }
     };
 
