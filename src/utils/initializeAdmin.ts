@@ -43,7 +43,7 @@ export const initializeAdminSystem = async () => {
       }
     });
 
-    if (authError && !authError.message.includes('User already registered')) {
+    if (authError && !authError.message.includes('User already registered') && !authError.message.includes('email address not authorized')) {
       throw new Error(`Erro ao criar usuário: ${authError.message}`);
     }
 

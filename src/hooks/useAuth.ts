@@ -128,9 +128,14 @@ export const useAuthState = () => {
 
   const adminLogin = async (username: string, password: string) => {
     try {
-      // For admin login, we'll use the username as email
+      // Map username to actual email for admin login
+      let email = username;
+      if (username === 'MXMOADM') {
+        email = 'admin@mxmo.com';
+      }
+
       const { error } = await supabase.auth.signInWithPassword({
-        email: `${username}@admin.local`,
+        email,
         password,
       });
 
