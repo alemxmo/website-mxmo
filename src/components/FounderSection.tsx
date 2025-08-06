@@ -69,8 +69,8 @@ const FounderSection = () => {
                     <div className="text-sm text-muted-foreground">Anos de Experiência</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-primary">50+</div>
-                    <div className="text-sm text-muted-foreground">Projetos Executados</div>
+                    <div className="text-2xl font-bold text-primary">900%</div>
+                    <div className="text-sm text-muted-foreground">ROI Médio Entregue</div>
                   </div>
                   <div className="text-center">
                     <div className="text-2xl font-bold text-primary">700%</div>

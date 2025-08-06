@@ -182,13 +182,13 @@ Enviado em: ${new Date().toLocaleString('pt-BR')}
             </div>
             
             <DialogTitle className="text-2xl sm:text-3xl font-bold text-foreground">
-              Aplique-se para Sessão Estratégica{" "}
+              Agende agora sua Sessão Estratégica{" "}
               <span className="gradient-text">GRATUITA!</span>
             </DialogTitle>
             
             <p className="text-base text-muted-foreground">
-              Liberamos <strong>10 Sessões Estratégicas</strong> de Expansão, mas por pouquíssimo tempo.
-              <br />Preencha o formulário e aguarde o nosso contato.
+              Aceleramos sua operação, seu faturamento e EXPANDIMOS sua empresa. Inscreva-se para uma sessão estratégica e receba um plano de ação para expansão estratégica do seu negócio, caso seja selecionado.
+              <br /><strong>Apenas 10 empresas serão selecionadas.</strong>
             </p>
           </div>
         </DialogHeader>

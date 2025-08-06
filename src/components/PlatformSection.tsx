@@ -13,11 +13,11 @@ const PlatformSection = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16 animate-on-scroll">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
-            Plataforma MXMO: A Inteligência por Trás do{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-secondary">Crescimento</span>
+            Plataforma MXMO: Tecnologia com{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-secondary">Propósito Estratégico</span>
           </h2>
           <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-            No coração da nossa entrega está uma plataforma proprietária que transforma dados em decisão.
+            Inteligência proprietária que interpreta dados de forma dinâmica, gera diagnósticos acionáveis e acelera o impacto das decisões certas, no tempo certo.
           </p>
         </div>
 
@@ -56,7 +56,7 @@ const PlatformSection = () => {
                 <div className="flex items-start">
                   <div className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></div>
                   <p className="text-sm text-gray-400">
-                    Transformação em força de vendas de elite
+                    Vendas com método, precisão e impacto direto no faturamento
                   </p>
                 </div>
               </div>
@@ -77,27 +77,26 @@ const PlatformSection = () => {
               </div>
               
               <p className="text-gray-400 mb-6">
-                Conectada diretamente ao ecossistema da Meta e outras plataformas, nossa IA monitora campanhas 
-                em tempo real. Ela não apenas aponta o que funciona, mas direciona ativamente a estratégia.
+                Integrada às maiores plataformas de mídia, nossa IA acompanha as campanhas em tempo real e direciona a estratégia com base no que de fato gera resultado.
               </p>
               
               <div className="space-y-4">
                 <div className="flex items-start">
                   <div className="w-2 h-2 bg-accent rounded-full mt-2 mr-3 flex-shrink-0"></div>
                   <p className="text-sm text-gray-400">
-                    Otimização automática de investimentos em tempo real
+                    Investimento otimizado automaticamente para máxima performance
                   </p>
                 </div>
                 <div className="flex items-start">
                   <div className="w-2 h-2 bg-accent rounded-full mt-2 mr-3 flex-shrink-0"></div>
                   <p className="text-sm text-gray-400">
-                    Sugestões de criativos de alto impacto
+                    Recomendações de criativos de alto impacto
                   </p>
                 </div>
                 <div className="flex items-start">
                   <div className="w-2 h-2 bg-accent rounded-full mt-2 mr-3 flex-shrink-0"></div>
                   <p className="text-sm text-gray-400">
-                    Máxima inteligência em cada real investido
+                    Retorno otimizado em cada passo, com decisões orientadas por inteligência aplicada
                   </p>
                 </div>
               </div>

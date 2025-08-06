@@ -5,6 +5,7 @@ import DiagnosticSection from "@/components/DiagnosticSection";
 import ProcessSection from "@/components/ProcessSection";
 import PlatformSection from "@/components/PlatformSection";
 import ProblemsSection from "@/components/ProblemsSection";
+import StrategicSessionSection from "@/components/StrategicSessionSection";
 import FounderSection from "@/components/FounderSection";
 import StrategicSessionForm from "@/components/StrategicSessionForm";
 import CTASection from "@/components/CTASection";
@@ -62,6 +63,7 @@ const Index = () => {
         <ProcessSection />
         <PlatformSection />
         <ProblemsSection />
+        <StrategicSessionSection />
         <FounderSection />
         <CTASection />
       </main>

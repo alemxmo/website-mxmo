@@ -32,7 +32,7 @@ const Navbar = () => {
             <div className="ml-10 flex items-baseline space-x-8">
               <a href="#processo" className="nav-link text-white/80 hover:text-white">Processo</a>
               <a href="#plataforma" className="nav-link text-white/80 hover:text-white">Plataforma</a>
-              <a href="#problemas" className="nav-link text-white/80 hover:text-white">Problemas</a>
+              <a href="#solucoes" className="nav-link text-white/80 hover:text-white">Soluções</a>
               <a href="#contato" className="nav-link text-white/80 hover:text-white">Contato</a>
             </div>
           </div>
@@ -59,7 +59,7 @@ const Navbar = () => {
             <div className="px-2 pt-2 pb-3 space-y-1 bg-background/95 backdrop-blur-md rounded-lg mt-2">
               <a href="#processo" className="mobile-nav-link" onClick={toggleMenu}>Processo</a>
               <a href="#plataforma" className="mobile-nav-link" onClick={toggleMenu}>Plataforma</a>
-              <a href="#problemas" className="mobile-nav-link" onClick={toggleMenu}>Problemas</a>
+              <a href="#solucoes" className="mobile-nav-link" onClick={toggleMenu}>Soluções</a>
               <a href="#contato" className="mobile-nav-link" onClick={toggleMenu}>Contato</a>
               <div className="pt-4">
                 <ClientLoginModal 

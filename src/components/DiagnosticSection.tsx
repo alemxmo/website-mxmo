@@ -17,9 +17,8 @@ const DiagnosticSection = () => {
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-secondary">Crescimento Sob Medida</span>
           </h2>
           <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-            Esqueça o "pronto para usar". Nossa abordagem é uma imersão profunda na sua realidade. 
-            Atuamos como arquitetos e executores, desenhando e implementando uma estrutura de crescimento 
-            que se integra perfeitamente ao DNA da sua empresa.
+            Desenhamos e implementamos uma estrutura de crescimento totalmente alinhada ao DNA da sua empresa. 
+            Mergulhamos na sua realidade para construir soluções estratégicas, personalizadas e orientadas por resultado.
           </p>
         </div>
 

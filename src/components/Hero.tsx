@@ -42,9 +42,9 @@ const Hero = () => {
           
           {/* Enhanced Subtitle */}
           <p className="text-xl sm:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed animate-fade-in font-light">
-            Não somos uma consultoria tradicional. Somos um <span className="text-primary font-semibold">ecossistema de aceleração</span> para negócios que exigem mais do que o padrão. 
+            Somos a evolução da consultoria. Unimos <span className="text-primary font-semibold">inteligência estratégica e tecnologia de ponta</span> para destravar negócios e impulsionar sua empresa a um novo patamar de performance. 
             <span className="block mt-2 text-lg text-gray-400">
-              Fundimos inteligência estratégica, tecnologia de ponta e obsessão por resultados.
+              Estratégia fundamentada, execução precisa e resultados mensuráveis.
             </span>
           </p>
           
@@ -107,8 +107,8 @@ const Hero = () => {
               <div className="hidden sm:block w-px h-12 bg-white/20"></div>
               <div className="block sm:hidden w-full h-px bg-white/20"></div>
               <div className="text-center min-w-0 flex-shrink-0">
-                <div className="text-2xl sm:text-3xl font-bold text-secondary mb-1">50+</div>
-                <div className="text-xs sm:text-sm text-gray-400 whitespace-nowrap">Projetos Executados</div>
+                <div className="text-2xl sm:text-3xl font-bold text-secondary mb-1">900%</div>
+                <div className="text-xs sm:text-sm text-gray-400 whitespace-nowrap">ROI Médio Entregue</div>
               </div>
             </div>
           </div>
