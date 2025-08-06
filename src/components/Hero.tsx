@@ -30,7 +30,7 @@ const Hero = () => {
           </div>
           
           {/* Main Headline */}
-          <h1 className="text-5xl sm:text-6xl lg:text-8xl font-bold mb-8 leading-tight animate-fade-in">
+          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-8 leading-tight animate-fade-in">
             <span className="text-white">Transformamos </span>
             <span className="block lg:inline">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-secondary animate-pulse">
