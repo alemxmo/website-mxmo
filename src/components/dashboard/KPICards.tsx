@@ -30,13 +30,13 @@ const KPICards = ({ data }: KPICardsProps) => {
       <>
         {[1, 2, 3, 4].map((index) => (
           <Card key={index} className="bg-slate-50 border-none shadow-lg animate-pulse">
-            <CardHeader className="pb-3">
-              <div className="h-4 bg-slate-200 rounded w-3/4"></div>
+            <CardHeader className="pb-2 p-3 sm:pb-3 sm:p-4">
+              <div className="h-3 bg-slate-200 rounded w-3/4 sm:h-4"></div>
             </CardHeader>
-            <CardContent className="space-y-3">
-              <div className="h-8 bg-slate-200 rounded w-1/2"></div>
-              <div className="h-2 bg-slate-200 rounded w-full"></div>
-              <div className="h-3 bg-slate-200 rounded w-2/3"></div>
+            <CardContent className="p-3 pt-0 space-y-2 sm:p-4 sm:pt-0 sm:space-y-3">
+              <div className="h-6 bg-slate-200 rounded w-1/2 sm:h-8"></div>
+              <div className="h-1.5 bg-slate-200 rounded w-full sm:h-2"></div>
+              <div className="h-2 bg-slate-200 rounded w-2/3 sm:h-3"></div>
             </CardContent>
           </Card>
         ))}
@@ -52,19 +52,19 @@ const KPICards = ({ data }: KPICardsProps) => {
         
         return (
           <Card key={index} className={`${colors.bgColor} border-none shadow-lg hover:shadow-xl transition-all duration-300`}>
-            <CardHeader className="pb-3">
-              <CardTitle className="text-sm font-medium text-slate-600 flex items-center gap-2">
-                <IconComponent className={`h-4 w-4 ${colors.color}`} />
-                {kpi.title}
+            <CardHeader className="pb-2 p-3 sm:pb-3 sm:p-4 lg:p-6">
+              <CardTitle className="text-xs font-medium text-slate-600 flex items-center gap-2 sm:text-sm">
+                <IconComponent className={`h-3 w-3 ${colors.color} sm:h-4 sm:w-4`} />
+                <span className="truncate">{kpi.title}</span>
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-3">
-              <div className="flex items-end gap-2">
-                <span className={`text-2xl font-bold ${colors.color}`}>{kpi.value}</span>
-                <span className="text-sm text-slate-500">/ {kpi.target}</span>
+            <CardContent className="p-3 pt-0 space-y-2 sm:p-4 sm:pt-0 sm:space-y-3 lg:p-6">
+              <div className="flex items-end gap-1 sm:gap-2">
+                <span className={`text-lg font-bold ${colors.color} sm:text-xl lg:text-2xl truncate`}>{kpi.value}</span>
+                <span className="text-xs text-slate-500 sm:text-sm">/ {kpi.target}</span>
               </div>
-              <Progress value={kpi.progress} className="h-2" />
-              <p className="text-xs text-slate-600">{kpi.description}</p>
+              <Progress value={kpi.progress} className="h-1.5 sm:h-2" />
+              <p className="text-xs text-slate-600 leading-tight sm:leading-normal">{kpi.description}</p>
             </CardContent>
           </Card>
         );

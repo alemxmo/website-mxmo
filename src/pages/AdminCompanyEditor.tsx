@@ -371,19 +371,19 @@ export default function AdminCompanyEditor() {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
       <AdminHeader onLogout={handleLogout} />
       
-      <main className="container mx-auto px-4 py-6 space-y-6 sm:px-6 lg:px-8">
+      <main className="px-3 py-4 space-y-4 sm:px-4 sm:py-6 sm:space-y-6 lg:container lg:mx-auto lg:px-8">
         <Card>
-          <CardHeader>
-            <CardTitle className="text-3xl text-center">
+          <CardHeader className="p-4 sm:p-6">
+            <CardTitle className="text-xl text-center sm:text-2xl lg:text-3xl">
               Editor Administrativo de Empresas
             </CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="flex gap-4 items-end">
+          <CardContent className="p-4 space-y-4 sm:p-6">
+            <div className="flex flex-col gap-3 sm:flex-row sm:gap-4 sm:items-end">
               <div className="flex-1">
                 <label className="text-sm font-medium">Selecionar Empresa</label>
                 <Select value={selectedCompany} onValueChange={handleCompanySelect}>
-                  <SelectTrigger>
+                  <SelectTrigger className="w-full">
                     <SelectValue placeholder="Escolha uma empresa para editar" />
                   </SelectTrigger>
                   <SelectContent>
@@ -395,19 +395,19 @@ export default function AdminCompanyEditor() {
                   </SelectContent>
                 </Select>
               </div>
-              <Button onClick={handleCreateNew} variant="outline">
+              <Button onClick={handleCreateNew} variant="outline" className="w-full sm:w-auto">
                 Criar Nova Empresa
               </Button>
             </div>
             
             {companyData && (
-              <div className="flex gap-2 pt-4 border-t">
+              <div className="flex flex-col gap-3 pt-4 border-t sm:flex-row sm:gap-2">
                 {selectedCompany ? (
                   <>
                     <Button 
                       onClick={handleSave} 
                       disabled={saving}
-                      className="min-w-[150px]"
+                      className="w-full sm:w-auto sm:min-w-[150px]"
                     >
                       {saving ? 'Salvando...' : 'Salvar no Banco'}
                     </Button>
@@ -415,7 +415,7 @@ export default function AdminCompanyEditor() {
                       onClick={handleDownload} 
                       disabled={saving}
                       variant="outline"
-                      className="min-w-[150px]"
+                      className="w-full sm:w-auto sm:min-w-[150px]"
                     >
                       Baixar JSON
                     </Button>
@@ -424,13 +424,13 @@ export default function AdminCompanyEditor() {
                   <Button 
                     onClick={handleAddNewCompany} 
                     disabled={saving}
-                    className="min-w-[150px]"
+                    className="w-full sm:w-auto sm:min-w-[150px]"
                   >
                     {saving ? 'Criando...' : 'Criar Nova Empresa'}
                   </Button>
                 )}
                 
-                <div className="text-sm text-muted-foreground flex items-center ml-4">
+                <div className="text-xs text-muted-foreground text-center sm:flex sm:items-center sm:ml-4 sm:text-sm">
                   {selectedCompany ? 
                     'Salvar: persiste no banco de dados' :
                     'Uma nova empresa será criada com arquivos para download'
@@ -443,66 +443,68 @@ export default function AdminCompanyEditor() {
 
         {(companyData && !loading) && (
           <Card>
-            <CardHeader>
-              <CardTitle>
+            <CardHeader className="p-4 sm:p-6">
+              <CardTitle className="text-lg sm:text-xl">
                 {selectedCompany ? `Editando: ${companyData.empresa}` : 'Criando Nova Empresa'}
               </CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="p-4 sm:p-6">
               <Tabs defaultValue="basic" className="w-full">
-                <TabsList className="grid w-full grid-cols-7">
-                  <TabsTrigger value="basic">Básico</TabsTrigger>
-                  <TabsTrigger value="kpis">KPIs</TabsTrigger>
-                  <TabsTrigger value="timeline">Timeline</TabsTrigger>
-                  <TabsTrigger value="phases">Fases</TabsTrigger>
-                  <TabsTrigger value="insights">Insights</TabsTrigger>
-                  <TabsTrigger value="steps">Próximos Passos</TabsTrigger>
-                  <TabsTrigger value="documents">Documentos</TabsTrigger>
-                </TabsList>
+                <div className="w-full overflow-x-auto">
+                  <TabsList className="flex w-max min-w-full grid-cols-7 sm:grid sm:w-full">
+                    <TabsTrigger value="basic" className="text-xs sm:text-sm">Básico</TabsTrigger>
+                    <TabsTrigger value="kpis" className="text-xs sm:text-sm">KPIs</TabsTrigger>
+                    <TabsTrigger value="timeline" className="text-xs sm:text-sm">Timeline</TabsTrigger>
+                    <TabsTrigger value="phases" className="text-xs sm:text-sm">Fases</TabsTrigger>
+                    <TabsTrigger value="insights" className="text-xs sm:text-sm">Insights</TabsTrigger>
+                    <TabsTrigger value="steps" className="text-xs sm:text-sm">Próximos</TabsTrigger>
+                    <TabsTrigger value="documents" className="text-xs sm:text-sm">Docs</TabsTrigger>
+                  </TabsList>
+                </div>
 
-                <TabsContent value="basic" className="space-y-4">
+                <TabsContent value="basic" className="mt-4 space-y-4">
                   <CompanyBasicInfo 
                     data={companyData} 
                     onChange={setCompanyData} 
                   />
                 </TabsContent>
 
-                <TabsContent value="kpis" className="space-y-4">
+                <TabsContent value="kpis" className="mt-4 space-y-4">
                   <CompanyKPIs 
                     data={companyData} 
                     onChange={setCompanyData} 
                   />
                 </TabsContent>
 
-                <TabsContent value="timeline" className="space-y-4">
+                <TabsContent value="timeline" className="mt-4 space-y-4">
                   <CompanyTimeline 
                     data={companyData} 
                     onChange={setCompanyData} 
                   />
                 </TabsContent>
 
-                <TabsContent value="phases" className="space-y-4">
+                <TabsContent value="phases" className="mt-4 space-y-4">
                   <CompanyPhases 
                     data={companyData} 
                     onChange={setCompanyData} 
                   />
                 </TabsContent>
 
-                <TabsContent value="insights" className="space-y-4">
+                <TabsContent value="insights" className="mt-4 space-y-4">
                   <CompanyInsights 
                     data={companyData} 
                     onChange={setCompanyData} 
                   />
                 </TabsContent>
 
-                <TabsContent value="steps" className="space-y-4">
+                <TabsContent value="steps" className="mt-4 space-y-4">
                   <CompanyNextSteps 
                     data={companyData} 
                     onChange={setCompanyData} 
                   />
                 </TabsContent>
 
-                <TabsContent value="documents" className="space-y-4">
+                <TabsContent value="documents" className="mt-4 space-y-4">
                   <CompanyDocuments 
                     data={companyData} 
                     onChange={setCompanyData} 
@@ -515,10 +517,10 @@ export default function AdminCompanyEditor() {
 
         {loading && (
           <Card>
-            <CardContent className="flex items-center justify-center py-8">
+            <CardContent className="flex items-center justify-center py-8 p-4 sm:p-6">
               <div className="text-center space-y-2">
-                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto"></div>
-                <p>Carregando dados da empresa...</p>
+                <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-primary mx-auto sm:h-8 sm:w-8"></div>
+                <p className="text-sm sm:text-base">Carregando dados da empresa...</p>
               </div>
             </CardContent>
           </Card>

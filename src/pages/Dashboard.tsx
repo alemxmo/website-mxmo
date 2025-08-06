@@ -55,34 +55,34 @@ const Dashboard = () => {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
       <DashboardHeader empresa={empresa} onLogout={handleLogout} />
       
-      <main className="container mx-auto px-4 py-6 space-y-6 sm:px-6 lg:px-8 lg:space-y-8">
+      <main className="px-3 py-4 space-y-4 sm:px-4 sm:py-6 sm:space-y-6 lg:container lg:mx-auto lg:px-8 lg:space-y-8">
         {/* Visão Geral do Projeto */}
-        <div className="grid gap-6">
+        <div className="w-full">
           <ProjectOverview empresa={empresa} data={data} />
         </div>
 
-        {/* KPIs Estratégicos */}
-        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 sm:gap-6">
+        {/* KPIs Estratégicos - Mobile-first grid */}
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4 lg:gap-6">
           <KPICards data={data} />
         </div>
 
         {/* Gráficos de Progresso */}
-        <div className="grid gap-6">
+        <div className="w-full">
           <ProgressChart data={data} />
         </div>
 
         {/* Alertas & Recomendações AI */}
-        <div className="grid gap-6">
+        <div className="w-full">
           <AIInsights data={data} />
         </div>
 
         {/* Próximos Passos e Documentos */}
-        <div className="grid gap-6">
+        <div className="w-full">
           <NextSteps data={data} />
         </div>
 
         {/* DNA MXMO */}
-        <div className="grid gap-6">
+        <div className="w-full">
           <CompanyDNA />
         </div>
       </main>

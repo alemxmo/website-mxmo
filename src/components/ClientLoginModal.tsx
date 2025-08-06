@@ -103,25 +103,26 @@ const ClientLoginModal = ({
           </button>
         )}
       </DialogTrigger>
-      <DialogContent className="mx-4 w-[calc(100vw-2rem)] max-w-md sm:mx-auto sm:w-full">
+      <DialogContent className="mx-3 w-[calc(100vw-1.5rem)] max-w-md sm:mx-auto sm:w-full">
         <DialogHeader>
-          <DialogTitle className="text-center text-xl font-bold">
+          <DialogTitle className="text-center text-lg font-bold sm:text-xl">
             Área do Cliente MXMO
           </DialogTitle>
         </DialogHeader>
         <div className="space-y-4 py-4">
           <div className="space-y-2">
-            <Label htmlFor="empresa">Nome da Empresa</Label>
+            <Label htmlFor="empresa" className="text-sm">Nome da Empresa</Label>
             <Input
               id="empresa"
               placeholder="Digite o nome da empresa"
               value={empresa}
               onChange={(e) => setEmpresa(e.target.value)}
               onKeyPress={handleKeyPress}
+              className="text-base" // Prevent zoom on iOS
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="senha">Senha</Label>
+            <Label htmlFor="senha" className="text-sm">Senha</Label>
             <Input
               id="senha"
               type="password"
@@ -129,11 +130,12 @@ const ClientLoginModal = ({
               value={senha}
               onChange={(e) => setSenha(e.target.value)}
               onKeyPress={handleKeyPress}
+              className="text-base" // Prevent zoom on iOS
             />
           </div>
           <Button 
             onClick={handleLogin} 
-            className="w-full"
+            className="w-full h-11 text-base"
             disabled={isLoading}
           >
             {isLoading ? "Entrando..." : "Entrar"}

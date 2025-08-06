@@ -56,13 +56,13 @@ const AdminLoginModal: React.FC<AdminLoginModalProps> = ({ children }) => {
       <DialogTrigger asChild>
         {children}
       </DialogTrigger>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="mx-3 w-[calc(100vw-1.5rem)] max-w-md sm:mx-auto sm:w-full">
         <DialogHeader>
-          <DialogTitle>Acesso Administrativo</DialogTitle>
+          <DialogTitle className="text-center text-lg font-bold sm:text-xl">Acesso Administrativo</DialogTitle>
         </DialogHeader>
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="empresa">Empresa</Label>
+            <Label htmlFor="empresa" className="text-sm">Empresa</Label>
             <Input
               id="empresa"
               type="text"
@@ -70,10 +70,11 @@ const AdminLoginModal: React.FC<AdminLoginModalProps> = ({ children }) => {
               value={empresa}
               onChange={(e) => setEmpresa(e.target.value)}
               onKeyPress={handleKeyPress}
+              className="text-base" // Prevent zoom on iOS
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="senha">Senha</Label>
+            <Label htmlFor="senha" className="text-sm">Senha</Label>
             <Input
               id="senha"
               type="password"
@@ -81,11 +82,12 @@ const AdminLoginModal: React.FC<AdminLoginModalProps> = ({ children }) => {
               value={senha}
               onChange={(e) => setSenha(e.target.value)}
               onKeyPress={handleKeyPress}
+              className="text-base" // Prevent zoom on iOS
             />
           </div>
           <Button 
             onClick={handleLogin} 
-            className="w-full" 
+            className="w-full h-11 text-base" 
             disabled={isLoading}
           >
             {isLoading ? "Entrando..." : "Entrar"}
