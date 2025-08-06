@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
+import { useAuthState } from "@/hooks/useAuth";
 
 interface AdminLoginModalProps {
   children: React.ReactNode;
@@ -16,6 +17,7 @@ const AdminLoginModal: React.FC<AdminLoginModalProps> = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
+  const { adminLogin } = useAuthState();
 
   const handleLogin = async () => {
     if (!empresa.trim() || !senha.trim()) {
@@ -26,26 +28,14 @@ const AdminLoginModal: React.FC<AdminLoginModalProps> = ({ children }) => {
     setIsLoading(true);
 
     try {
-      const response = await fetch('/emp_lgn.txt');
-      const text = await response.text();
-      const lines = text.trim().split('\n');
+      const result = await adminLogin(empresa, senha);
       
-      const credentials = lines.map(line => {
-        const [company, password, path] = line.split(':');
-        return { company, password, path };
-      });
-
-      const validCredential = credentials.find(
-        cred => cred.company.toLowerCase() === empresa.toLowerCase() && 
-                cred.password === senha
-      );
-
-      if (validCredential && validCredential.path === 'admin') {
+      if (result.success) {
         toast.success("Login realizado com sucesso!");
         setIsOpen(false);
         navigate('/admin/company-editor');
       } else {
-        toast.error("Credenciais inválidas");
+        toast.error(result.error || "Credenciais inválidas");
       }
     } catch (error) {
       console.error('Erro no login:', error);

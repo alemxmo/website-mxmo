@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useToast } from '@/hooks/use-toast';
+import { supabase } from '@/integrations/supabase/client';
 import { CompanyBasicInfo } from '@/components/admin/CompanyBasicInfo';
 import { CompanyKPIs } from '@/components/admin/CompanyKPIs';
 import { CompanyTimeline } from '@/components/admin/CompanyTimeline';
@@ -15,9 +16,17 @@ import { CompanyDocuments } from '@/components/admin/CompanyDocuments';
 import AdminHeader from '@/components/admin/AdminHeader';
 import AdminFooter from '@/components/admin/AdminFooter';
 import type { CompanyData } from '@/hooks/useCompanyData';
+import { fetchSupabaseCompanyData, saveCompanyDataToSupabase } from '@/utils/supabaseCompanyData';
+
+interface Company {
+  id: string;
+  name: string;
+  code: string;
+  email: string;
+}
 
 export default function AdminCompanyEditor() {
-  const [companies, setCompanies] = useState<string[]>([]);
+  const [companies, setCompanies] = useState<Company[]>([]);
   const [selectedCompany, setSelectedCompany] = useState<string>('');
   const [companyData, setCompanyData] = useState<CompanyData | null>(null);
   const [loading, setLoading] = useState(false);
@@ -35,11 +44,33 @@ export default function AdminCompanyEditor() {
 
   const loadCompanies = async () => {
     try {
+      // Try Supabase first, fallback to file system
+      try {
+        const { data: supabaseCompanies, error } = await supabase
+          .from('companies')
+          .select('id, name, code, email')
+          .order('name');
+
+        if (!error && supabaseCompanies) {
+          setCompanies(supabaseCompanies);
+          return;
+        }
+      } catch (supabaseError) {
+        console.log('Fallback to file system for companies list');
+      }
+
+      // Fallback to file system
       const response = await fetch('/emp_lgn.txt');
       const text = await response.text();
       const lines = text.trim().split('\n');
       const companyNames = lines.map(line => line.split(':')[0]);
-      setCompanies(companyNames);
+      const fileCompanies = companyNames.map(name => ({
+        id: name,
+        name,
+        code: name,
+        email: `${name}@example.com`
+      }));
+      setCompanies(fileCompanies);
     } catch (error) {
       console.error('Erro ao carregar empresas:', error);
       toast({
@@ -50,16 +81,31 @@ export default function AdminCompanyEditor() {
     }
   };
 
-  const loadCompanyData = async (companyName: string) => {
+  const loadCompanyData = async (companyId: string) => {
     setLoading(true);
     try {
+      // Try Supabase first
+      try {
+        const supabaseData = await fetchSupabaseCompanyData(companyId);
+        setCompanyData(supabaseData);
+        return;
+      } catch (supabaseError) {
+        console.log('Fallback to file system for company data');
+      }
+
+      // Fallback to file system
+      const company = companies.find(c => c.id === companyId);
+      if (!company) {
+        throw new Error(`Empresa não encontrada`);
+      }
+
       const response = await fetch('/emp_lgn.txt');
       const text = await response.text();
       const lines = text.trim().split('\n');
-      const companyLine = lines.find(line => line.startsWith(`${companyName}:`));
+      const companyLine = lines.find(line => line.startsWith(`${company.name}:`));
       
       if (!companyLine) {
-        throw new Error(`Empresa ${companyName} não encontrada`);
+        throw new Error(`Empresa ${company.name} não encontrada`);
       }
       
       const [, , jsonPath] = companyLine.split(':');
@@ -78,9 +124,9 @@ export default function AdminCompanyEditor() {
     }
   };
 
-  const handleCompanySelect = (companyName: string) => {
-    setSelectedCompany(companyName);
-    loadCompanyData(companyName);
+  const handleCompanySelect = (companyId: string) => {
+    setSelectedCompany(companyId);
+    loadCompanyData(companyId);
   };
 
 
@@ -107,6 +153,53 @@ export default function AdminCompanyEditor() {
     }
   };
 
+  const handleSave = async () => {
+    if (!companyData || !selectedCompany) {
+      toast({
+        variant: "destructive",
+        title: "Erro",
+        description: "Nenhum dado para salvar."
+      });
+      return;
+    }
+    
+    setSaving(true);
+    try {
+      // Try to save to Supabase first
+      await saveCompanyDataToSupabase(selectedCompany, companyData);
+      
+      toast({
+        title: "Sucesso!",
+        description: "Dados salvos no banco de dados.",
+        duration: 5000
+      });
+    } catch (error) {
+      console.error('Erro ao salvar no Supabase, fazendo download do JSON:', error);
+      
+      // Fallback to download JSON
+      try {
+        const company = companies.find(c => c.id === selectedCompany);
+        const companyName = company?.name || companyData.empresa;
+        
+        await downloadCompanyJSON(companyName, companyData);
+        
+        toast({
+          title: "Dados baixados!",
+          description: `Arquivo ${companyName}.json foi baixado (falha ao salvar no banco).`,
+          duration: 5000
+        });
+      } catch (downloadError) {
+        toast({
+          variant: "destructive",
+          title: "Erro",
+          description: "Não foi possível salvar os dados."
+        });
+      }
+    } finally {
+      setSaving(false);
+    }
+  };
+
   const handleDownload = async () => {
     if (!companyData) {
       toast({
@@ -119,7 +212,8 @@ export default function AdminCompanyEditor() {
     
     setSaving(true);
     try {
-      const companyName = selectedCompany || companyData.empresa;
+      const company = companies.find(c => c.id === selectedCompany);
+      const companyName = company?.name || companyData.empresa;
       
       if (!companyName) {
         throw new Error('Nome da empresa não definido');
@@ -252,7 +346,13 @@ export default function AdminCompanyEditor() {
       });
       
       // Atualizar a lista de empresas
-      setCompanies(prev => [...prev, companyName]);
+      const newCompany: Company = {
+        id: companyName,
+        name: companyName,
+        code: companyName,
+        email: `${companyName}@example.com`
+      };
+      setCompanies(prev => [...prev, newCompany]);
       setSelectedCompany(companyName);
       
     } catch (error) {
@@ -288,8 +388,8 @@ export default function AdminCompanyEditor() {
                   </SelectTrigger>
                   <SelectContent>
                     {companies.map(company => (
-                      <SelectItem key={company} value={company}>
-                        {company}
+                      <SelectItem key={company.id} value={company.id}>
+                        {company.name}
                       </SelectItem>
                     ))}
                   </SelectContent>
@@ -302,17 +402,37 @@ export default function AdminCompanyEditor() {
             
             {companyData && (
               <div className="flex gap-2 pt-4 border-t">
-                <Button 
-                  onClick={selectedCompany ? handleDownload : handleAddNewCompany} 
-                  disabled={saving}
-                  className="min-w-[150px]"
-                >
-                  {saving ? 'Baixando...' : selectedCompany ? 'Baixar JSON' : 'Criar Nova Empresa'}
-                </Button>
+                {selectedCompany ? (
+                  <>
+                    <Button 
+                      onClick={handleSave} 
+                      disabled={saving}
+                      className="min-w-[150px]"
+                    >
+                      {saving ? 'Salvando...' : 'Salvar no Banco'}
+                    </Button>
+                    <Button 
+                      onClick={handleDownload} 
+                      disabled={saving}
+                      variant="outline"
+                      className="min-w-[150px]"
+                    >
+                      Baixar JSON
+                    </Button>
+                  </>
+                ) : (
+                  <Button 
+                    onClick={handleAddNewCompany} 
+                    disabled={saving}
+                    className="min-w-[150px]"
+                  >
+                    {saving ? 'Criando...' : 'Criar Nova Empresa'}
+                  </Button>
+                )}
                 
                 <div className="text-sm text-muted-foreground flex items-center ml-4">
                   {selectedCompany ? 
-                    'Baixar: faz download do JSON atualizado' :
+                    'Salvar: persiste no banco de dados' :
                     'Uma nova empresa será criada com arquivos para download'
                   }
                 </div>

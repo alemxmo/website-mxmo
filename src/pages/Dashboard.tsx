@@ -8,13 +8,15 @@ import AIInsights from "@/components/dashboard/AIInsights";
 import NextSteps from "@/components/dashboard/NextSteps";
 import CompanyDNA from "@/components/dashboard/CompanyDNA";
 import { useCompanyData } from "@/hooks/useCompanyData";
+import { supabase } from "@/integrations/supabase/client";
 
 const Dashboard = () => {
   const { empresa } = useParams<{ empresa: string }>();
   const navigate = useNavigate();
   const { data, loading, error } = useCompanyData(empresa || '');
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
     navigate("/");
   };
 

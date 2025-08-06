@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 
 interface ClientLoginModalProps {
   triggerClassName?: string;
@@ -32,29 +33,55 @@ const ClientLoginModal = ({
     setIsLoading(true);
     
     try {
-      // Fetch the login credentials file
-      const response = await fetch('/emp_lgn.txt');
-      const text = await response.text();
-      
-      // Parse the credentials
-      const credentials = text.trim().split('\n').map(line => {
-        const [comp, pass] = line.split(':');
-        return { empresa: comp, senha: pass };
-      });
+      // Find company access by username and password
+      const { data: companyAccess, error } = await supabase
+        .from('company_access')
+        .select(`
+          id,
+          username,
+          password_hash,
+          company_id,
+          companies (
+            id,
+            name,
+            code
+          )
+        `)
+        .eq('username', empresa.toUpperCase())
+        .single();
 
-      // Validate login
-      const validCredential = credentials.find(
-        cred => cred.empresa.toUpperCase() === empresa.toUpperCase() && cred.senha === senha
-      );
-
-      if (validCredential) {
-        toast.success("Login realizado com sucesso!");
-        setIsOpen(false);
-        navigate(`/dashboard/${validCredential.empresa.toUpperCase()}`);
-      } else {
-        toast.error("Empresa ou senha incorretos");
+      if (error || !companyAccess) {
+        toast.error("Empresa não encontrada");
+        return;
       }
+
+      // For now, we'll compare passwords directly (in production, use proper hashing)
+      if (companyAccess.password_hash !== senha) {
+        toast.error("Senha incorreta");
+        return;
+      }
+
+      // Update last login
+      await supabase
+        .from('company_access')
+        .update({ last_login: new Date().toISOString() })
+        .eq('id', companyAccess.id);
+
+      // Log access
+      await supabase
+        .from('access_logs')
+        .insert({
+          user_id: companyAccess.id,
+          user_type: 'company',
+          action: 'login',
+          details: { company_name: companyAccess.companies?.name }
+        });
+
+      toast.success("Login realizado com sucesso!");
+      setIsOpen(false);
+      navigate(`/dashboard/${companyAccess.companies?.code || companyAccess.company_id}`);
     } catch (error) {
+      console.error('Login error:', error);
       toast.error("Erro ao realizar login");
     } finally {
       setIsLoading(false);
