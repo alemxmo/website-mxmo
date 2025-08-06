@@ -12,7 +12,7 @@ interface AdminLoginModalProps {
 }
 
 const AdminLoginModal: React.FC<AdminLoginModalProps> = ({ children }) => {
-  const [empresa, setEmpresa] = useState("");
+  const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -20,7 +20,7 @@ const AdminLoginModal: React.FC<AdminLoginModalProps> = ({ children }) => {
   const { adminLogin } = useAuthState();
 
   const handleLogin = async () => {
-    if (!empresa.trim() || !senha.trim()) {
+    if (!email.trim() || !senha.trim()) {
       toast.error("Por favor, preencha todos os campos");
       return;
     }
@@ -28,7 +28,7 @@ const AdminLoginModal: React.FC<AdminLoginModalProps> = ({ children }) => {
     setIsLoading(true);
 
     try {
-      const result = await adminLogin(empresa, senha);
+      const result = await adminLogin(email, senha);
       
       if (result.success) {
         toast.success("Login realizado com sucesso!");
@@ -62,13 +62,13 @@ const AdminLoginModal: React.FC<AdminLoginModalProps> = ({ children }) => {
         </DialogHeader>
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="empresa" className="text-sm">Empresa</Label>
+            <Label htmlFor="email" className="text-sm">Email</Label>
             <Input
-              id="empresa"
-              type="text"
-              placeholder="Digite o nome da empresa"
-              value={empresa}
-              onChange={(e) => setEmpresa(e.target.value)}
+              id="email"
+              type="email"
+              placeholder="Digite seu email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               onKeyPress={handleKeyPress}
               className="text-base" // Prevent zoom on iOS
             />
